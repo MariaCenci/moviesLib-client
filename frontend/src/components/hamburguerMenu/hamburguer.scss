@@ -1,0 +1,116 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins.scss";
+
+
+.container-hamburguer{
+  width: 10%;
+}
+
+.hamburguer-icon {
+  position: absolute;
+  width: 20px;
+  height: 1.8px;
+  background-color: map-get($colors, color-secondary);
+  transition: 0.5s;
+  border-radius: 15px;
+
+right: 8%;
+  top: 46%;
+}
+
+.hamburguer-icon::before {
+  top: -8px;
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 1.8px;
+  border-radius: 15px;
+  background-color: map-get($colors, color-secondary);
+}
+
+.hamburguer-icon::after {
+  top: 8px;
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 1.8px;
+  border-radius: 15px;
+  background-color: map-get($colors, color-secondary);
+}
+
+ul.list-pages li {
+  list-style-type: none;
+  
+}
+
+ul.list-pages li a {
+  text-decoration: none;
+  color: white;
+  background-color: transparent;
+}
+
+.menu-list {
+  @include flex-center;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+  flex-wrap: nowrap;
+  color: black;
+}
+
+.menu-list .list-pages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-list .list-pages li {
+  margin: 35px 0;
+  color: black;
+  margin-bottom: 50px;
+  font-size: 1.2em;
+  font-family: map-get($global-fonts, font-body);
+}
+
+.toggleActive .hamburguer-icon {
+  background-color: transparent;
+  box-shadow: 0 2px 5px transparent;
+}
+
+.toggleActive .hamburguer-icon::after {
+  top: 0;
+  background: map-get($colors, color-secondary);
+  transform: rotate(225deg);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 10;
+}
+
+.toggleActive .hamburguer-icon::before {
+  top: 0;
+  background: map-get($colors, color-secondary);
+  transform: rotate(135deg);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 10;
+}
+
+
+.menuClose{
+  z-index: 0;
+}
+
+.menuOpen {
+  background-color: map-get($colors, color-primary);
+  position: absolute;
+  position: fixed;
+
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}

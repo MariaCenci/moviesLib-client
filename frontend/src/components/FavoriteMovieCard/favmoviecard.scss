@@ -1,0 +1,124 @@
+@import "../../Styles/variables.scss";
+
+.card-favorites {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  width: 30%;
+  background-color: rgb(26, 26, 26);
+  box-shadow: 1px 1px 15px black;
+  padding: 30px 10px;
+
+  .container-main-favorites {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+  .img-movies {
+    width: 270px;
+  }
+
+  img.img-movies {
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2.movie-title {
+    font-size: 1.1em;
+    font-family: "Righteous", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: map-get($colors, color-secondary);
+    text-wrap: wrap;
+    text-shadow: 1px 1px 10px black;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0);
+    height: 2.3em;
+  }
+
+
+    .container-favorite-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 15px;
+
+      button#remove-favorite-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        width: 50%;
+        padding:5px;
+        border: none;
+        gap: 10px;
+      
+
+    span{
+
+    margin: 0;
+    color: map-get($colors, color-secondary);
+    }
+}
+    }
+  }
+}
+
+/*TABLET*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    width: 35%;
+    max-height: 130vh;
+    margin-bottom: 50px;
+    padding: 15px;
+
+    background-color: rgb(26, 26, 26);
+    box-shadow: 1px 1px 15px black;
+  }
+
+  h2.movie-title {
+    font-size: 1.1em;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  /*VOTES*/
+
+  .vote-average-container h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    background-color: rgb(26, 26, 26);
+    color: white;
+    font-size: 1.2em;
+    padding-bottom: 30px;
+  }
+
+  h4.vote-average svg {
+    font-size: 1.2em;
+    background-color: rgb(26, 26, 26);
+    color: rgb(41, 138, 242);
+  }
+
+  .container-see-more {
+    display: flex;
+    margin: 0 10px 0 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a.link-see-more {
+    width: 100%;
+    font-size: 1.1em;
+  }
+}

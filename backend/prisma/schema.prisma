@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id  Int    @id @default(autoincrement())
+  email    String
+
+  FavoriteMovie FavoriteMovie[]
+}
+
+model FavoriteMovie {
+  id Int  @id 
+  user     User   @relation(fields: [user_id], references: [user_id])
+  original_title       String
+vote_average Float?
+poster_path String?
+  user_id Int
+}

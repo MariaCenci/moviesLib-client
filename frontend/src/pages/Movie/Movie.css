@@ -1,0 +1,73 @@
+.container-movie-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+padding:3rem;
+color: white;
+}
+
+.container-movie-page .card{
+    background-color: transparent;
+    box-shadow: none;
+    margin-bottom: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container-movie-page .card img{
+width: 80%
+}
+
+
+.container-movie-page h4.vote-average{
+background-color: rgb(69, 69, 69) ;
+}
+
+.container-movie-page h4.vote-average svg{
+  
+    background-color:rgb(69, 69, 69); 
+    font-size: 1.2rem ;
+  
+}
+
+.container-movie-page p.star{
+    background-color:rgb(69, 69, 69); 
+}
+
+.container-movie-page h4 svg{
+    color: rgb(41, 138, 242);
+}
+
+.tagline{
+    text-align: center;
+margin-bottom: 40px;
+font-size: 1.1rem;
+font-style: italic;
+margin-top: 20px;
+}
+
+.movie-info h4{
+    display: flex;
+    align-items:center ;
+    
+    font-size: 1.2rem;
+}
+
+.movie-info p, span{
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.container-movie-page h2{
+    margin-top: 10px;
+    margin-bottom: 35px;
+    font-size: 1.3rem ;
+    text-align: center;
+    text-transform: none;
+}
+
+

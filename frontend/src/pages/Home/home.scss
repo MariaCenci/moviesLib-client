@@ -1,0 +1,43 @@
+
+.container-movies{
+
+  display: flex;
+ 
+  justify-content: space-around;
+  align-items: center;
+flex-wrap: wrap;
+  padding-top: 80px;
+position: absolute;
+z-index: -10;
+right: 0;
+left:0;
+}
+
+h2.top-movies, h2.popular-movies{
+
+    color: white;
+    font-size: 2em;
+    text-shadow: 1px 1px 15px black;
+   padding-top: 40px;
+  font-family: 'Bebas Neue', sans-serif;
+   
+}
+
+
+
+.movie-card-container {
+    display: flex; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    width: 980px;
+    height: 790px;
+    padding: 20px 0;
+    gap: 30px;
+    overflow-y: hidden;
+   
+   
+
+
+  }
+
+
