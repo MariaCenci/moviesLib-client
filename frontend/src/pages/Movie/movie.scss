@@ -1,0 +1,120 @@
+@import "../../Styles/variables.scss";
+
+
+.container-movie-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+padding: 5em 2em 2em 2em;
+color: map-get($colors, color-secondary);
+
+
+
+.poster{
+    width: 40%;
+    max-width: 400px;
+ 
+img{
+    width: 94%;  
+     border-radius: 10px;
+     box-shadow: 1px 1px 14px rgb(0, 0, 0);
+     border: .5px solid rgba(52, 52, 52, 0.329);
+}
+
+}
+
+
+.container-infos{
+    display: flex;
+    flex-direction: column;
+
+    gap: 40px;
+    width: 60%;
+    max-width: 500px;
+
+
+    h2{
+     font-size: map-get(map-get($desktop, font-size), title1);   
+    }
+
+
+.container-main-movie-info{
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+   margin-bottom: 40px;
+
+   .primary-infos{
+    display: flex;
+    align-items: center;
+  
+gap: 5px;
+
+.middle-dot img{
+    width: 10px;
+    
+   
+}
+
+   }
+
+
+
+
+
+
+
+
+.genres {
+
+display: flex;
+align-items: center;
+flex-direction: row;
+gap: 10px;
+
+.genre{
+    display: flex;
+justify-content: center;
+align-items: center;
+
+padding: 4px 6px;
+    background-color: rgba(128, 128, 128, 0.411);
+    border: .5px solid rgba(255, 255, 255, 0.26);
+    box-shadow: 1px 1px 10px rgb(32, 32, 32);
+border-radius: .2em ;
+width: 4em;
+}
+
+}
+
+
+.container-budget{
+    display: flex;
+    align-items: center;
+  gap: 5px;
+   
+img{
+    width: 30px;
+}
+
+}
+
+
+span.budget{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-top: 5px;
+}
+
+}
+}
+
+.movie-info p, span{
+   
+    font-size: map-get(map-get($mobile, font-size), body);
+}
+
+
+
+}

@@ -11,6 +11,8 @@ type Movie = {
   id: number;
 };
 
+
+
 const Home = () => {
   const [topMovies, setTopMovies] = useState<Movie[]>([]);
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);

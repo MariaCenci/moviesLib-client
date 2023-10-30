@@ -1,3 +1,4 @@
+@import "../../Styles/variables.scss";
 
 .container-movies{
 
@@ -11,11 +12,15 @@ position: absolute;
 z-index: -10;
 right: 0;
 left:0;
+
+::-webkit-scrollbar{
+  overflow-x: hidden;
 }
+
 
 h2.top-movies, h2.popular-movies{
 
-    color: white;
+    color: map-get($colors, color-secondary);
     font-size: 2em;
     text-shadow: 1px 1px 15px black;
    padding-top: 40px;
@@ -35,9 +40,10 @@ h2.top-movies, h2.popular-movies{
     gap: 30px;
     overflow-y: hidden;
    
-   
+
 
 
   }
 
 
+}

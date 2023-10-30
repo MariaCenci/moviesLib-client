@@ -8,12 +8,10 @@ import { Search } from "./pages/Search";
 
 const App = () => {
   return (
-   
-      <>
-        <Header />
-<Outlet />
-      </>
-   
+    <>
+      <Header />
+      <Outlet />
+    </>
   );
 };
 

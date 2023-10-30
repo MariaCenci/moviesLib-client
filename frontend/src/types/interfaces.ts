@@ -5,7 +5,7 @@ export interface MovieType{
    tagline?: string,
     runtime?: string,
     overview?: string,
-    genres?: string[] ,
+    genres?: Genre[] ,
     release_date?: Date ,
     poster_path?: string,
   vote_average?: string,
@@ -36,4 +36,5 @@ export type Movie = {
   export type Genre = {
     id: number,
     name: string
+    
   }
