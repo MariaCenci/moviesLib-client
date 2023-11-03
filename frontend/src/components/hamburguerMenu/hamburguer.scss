@@ -4,12 +4,13 @@
 
 .container-hamburguer{
   width: 10%;
+  padding: 14px;
 }
 
 .hamburguer-icon {
   position: absolute;
-  width: 20px;
-  height: 1.8px;
+  width: 18px;
+  height: 1.4px;
   background-color: map-get($colors, color-secondary);
   transition: 0.5s;
   border-radius: 15px;
@@ -19,21 +20,21 @@ right: 8%;
 }
 
 .hamburguer-icon::before {
-  top: -8px;
+  top: -7px;
   content: "";
   position: absolute;
-  width: 20px;
-  height: 1.8px;
+  width: 18px;
+  height: 1.4px;
   border-radius: 15px;
   background-color: map-get($colors, color-secondary);
 }
 
 .hamburguer-icon::after {
-  top: 8px;
+  top: 7px;
   content: "";
   position: absolute;
-  width: 20px;
-  height: 1.8px;
+  width: 18px;
+  height: 1.4px;
   border-radius: 15px;
   background-color: map-get($colors, color-secondary);
 }
@@ -113,4 +114,17 @@ ul.list-pages li a {
   left: 0;
   width: 100%;
   z-index: 2;
+}
+
+
+@media screen and (min-width: 900px)  {
+
+
+  .hamburguer-icon {
+ 
+  right: 10%;
+   
+  }
+  
+
 }

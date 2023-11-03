@@ -4,28 +4,27 @@
   display: flex;
   flex-direction: column;
 
-  width: 700px;
-  height: 680px;
+  width: 60vw;
+
+ min-height: 40vh;
   margin-bottom: 50px;
-  padding: 15px;
+  padding: 10px;
+  margin: 5px;
   position: relative;
   background-color: rgb(26, 26, 26);
   box-shadow: 1px 1px 15px black;
+ 
 }
 
 
-.img-movies {
-  width: 270px;
-}
-
-img.img-movies  {
+img.img-movies {
   justify-content: center;
   align-items: center;
-  
+  width: 28vw;
 }
 
 h2.movie-title {
-  font-size: 1.1em;
+  font-size: map-get(map-get($mobile, font-size), title4);
   font-family: "Righteous", sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -34,155 +33,219 @@ h2.movie-title {
   text-shadow: 1px 1px 10px black;
   margin-top: 30px;
   margin-bottom: 15px;
- background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
   height: 2.3em;
-
 }
-
-
 
 /*VOTES*/
 .container-rating {
   position: absolute;
-  top: -.6em;
-  right: -.6em;
+  top: -0.6em;
+  right: -0.6em;
   background-color: transparent;
   color: white;
-  font-size: 0.9rem;
+  font-size: map-get(map-get($mobile, font-size), title4);
 
   .rating {
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
     border-radius: 50%;
     background-color: map-get($colors, color-rating);
     box-shadow: 2px 2px 9px rgba(4, 4, 4, 0.91);
-    width:3.8em;
-    height: 3.8em;
+    width: 3em;
+    height: 3em;
   }
 }
 
-.container-main{
-
+.container-main {
   display: flex;
   justify-content: center;
   flex-direction: column;
 
+  .container-favorite-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
 
+    #favorite-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      width: 20%;
+      padding: 8px;
+      border: none;
 
-.container-favorite-btn{
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100%;
-margin-bottom: 15px;
+      svg {
+        width: 1em;
+      }
+    }
+  }
 
+  /*SEE MORE BTN*/
+  .container-see-more {
+    display: flex;
+    flex-direction: column;
 
-#favorite-btn{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-width: 20%;
-  padding: 8px;
-  border: none;
- 
+    border-radius: 5px;
+  }
+
+  .container-see-more a {
+    text-decoration: none;
+    font-size: map-get(map-get($mobile, font-size), title3);
+  }
+
+  .link-see-more {
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgb(15, 4, 81), rgb(46, 33, 193));
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+
+    min-height: 25px;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .link-see-more:hover {
+    background: rgba(16, 84, 192, 0.706);
+    transition: 0.4s;
+  }
 }
 
-}
-
-
-
-
-
-/*SEE MORE BTN*/
-.container-see-more {
-  display: flex;
-  flex-direction: column;
-
-  border-radius: 5px;
-}
-
-.container-see-more a {
-  text-decoration: none;
-}
-
-.container-see-more {
-  border-radius: 5px;
-}
-
-.link-see-more {
-  border: none;
-  border-radius: 5px;
-  background: linear-gradient(90deg, rgb(15, 4, 81), rgb(46, 33, 193));
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  min-width: 25px;
-  min-height: 25px;
-  text-align: center;
-  padding: 5px;
-}
-
-.link-see-more:hover {
-  background: rgba(16, 84, 192, 0.706);
-  transition: 0.4s;
-}
-
-
-
-}
-/*TABLET*/
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 450px) and (max-width: 767px) {
   .card {
     display: flex;
     flex-direction: column;
 
-    width: 35%;
-    max-height: 130vh;
+    width: 70em;
+    height: 24em;
     margin-bottom: 50px;
-    padding: 15px;
+    padding: 14px;
 
-    background-color: rgb(26, 26, 26);
-    box-shadow: 1px 1px 15px black;
+h2.movie-title{
+  font-size: map-get(map-get($tablet, font-size), subtitle);
+}
+
+    .img-movies {
+      width: 140px;
+    }
+
+    /*VOTES*/
+    .container-rating {
+      font-size: map-get(map-get($mobile, font-size), title3);
+
+    }
+
+    .container-main {
+      #favorite-btn {
+        width: 24%;
+
+        svg {
+          width: 1.5em;
+        }
+      }
+
+      /*SEE MORE BTN*/
+      .container-see-more {
+       a {
+          text-decoration: none;
+          font-size: map-get(map-get($mobile, font-size), title2);
+        }
+        .link-see-more {
+     
+
+          min-height: 25px;
+          text-align: center;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+/*TABLET*/
+@media screen and (min-width: 768px) and (max-width: 899px) {
+  .card {
+
+    width: 700px;
+    height: 500px;
+
+
+    .img-movies {
+      width: 180px;
+    }
+
+
+h2.movie-title{
+  font-size: map-get(map-get($tablet, font-size), title4);
+}
+
+
+.container-see-more {
+  a {
+     text-decoration: none;
+     font-size: map-get(map-get($tablet, font-size), title4);
+   }
+
+
   }
 
-  h2.movie-title {
-    font-size: 1.1em;
-    margin-top: 30px;
-    margin-bottom: 30px;
+
+  }
+}
+
+/*DESKTOP*/
+@media screen and (min-width: 900px) {
+  .card {
+
+
+    width: 700px;
+    height: 540px;
+    
+
+    .img-movies {
+      width: 190px;
+    }
+
+
+h2.movie-title{
+  font-size: map-get(map-get($tablet, font-size), title4);
+}
+
+
+
+
+.container-see-more {
+  a {
+     text-decoration: none;
+     font-size: map-get(map-get($tablet, font-size), title4);
+   }
+
+
   }
 
-  /*VOTES*/
 
-  .vote-average-container h4 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+  }
+}
 
-    background-color: rgb(26, 26, 26);
-    color: white;
-    font-size: 1.2em;
-    padding-bottom: 30px;
+
+@media screen and (min-width: 1023px) {
+  .card {
+
+
+    width: 700px;
+    height: 480px;
+    
+
+    .img-movies {
+      width: 170px;
+    }
   }
 
-  h4.vote-average svg {
-    font-size: 1.2em;
-    background-color: rgb(26, 26, 26);
-    color: rgb(41, 138, 242);
-  }
 
-  .container-see-more {
-    display: flex;
-    margin: 0 10px 0 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  a.link-see-more {
-    width: 100%;
-    font-size: 1.1em;
-  }
 }

@@ -1,49 +1,103 @@
 @import "../../Styles/variables.scss";
 
-.container-movies{
-
+.container-movies {
   display: flex;
- 
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-flex-wrap: wrap;
-  padding-top: 80px;
-position: absolute;
-z-index: -10;
-right: 0;
-left:0;
 
-::-webkit-scrollbar{
-  overflow-x: hidden;
-}
+  flex-wrap: wrap;
+  padding-top: 30px;
+  position: absolute;
+  z-index: -10;
 
-
-h2.top-movies, h2.popular-movies{
-
-    color: map-get($colors, color-secondary);
-    font-size: 2em;
-    text-shadow: 1px 1px 15px black;
-   padding-top: 40px;
-  font-family: 'Bebas Neue', sans-serif;
-   
-}
-
-
-
-.movie-card-container {
-    display: flex; 
-    overflow-x: auto; 
-    white-space: nowrap; 
-    width: 980px;
-    height: 790px;
-    padding: 20px 0;
-    gap: 30px;
-    overflow-y: hidden;
-   
-
-
-
+  ::-webkit-scrollbar {
+    overflow-x: hidden;
   }
 
+  h2.top-movies,
+  h2.popular-movies {
+    color: map-get($colors, color-secondary);
+    font-size: map-get(map-get($mobile, font-size), title1);
+    text-shadow: 1px 1px 15px black;
+    padding: 40px 0 0 40px;
+    font-family: map-get($global-fonts, font-title);
+  }
 
+  .movie-card-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 90vw;
+
+    height: 450px;
+    padding: 20px 10px;
+
+    overflow-y: hidden;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 767px) {
+  .container-movies {
+    .movie-card-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 90vw;
+      height: 480px;
+      padding: 20px 0;
+      gap: 30px;
+      overflow-y: hidden;
+    }
+  }
+}
+
+/*TABLET*/
+@media screen and (min-width: 768px) and (max-width: 899px) {
+  .container-movies {
+    h2.top-movies,
+    h2.popular-movies {
+      padding-left:  1.6em;
+      font-size: map-get(map-get($tablet, font-size), title1);
+    }
+
+    .movie-card-container {
+      width: 700px;
+      height: 600px;
+      padding: 20px 0;
+    }
+  }
+}
+
+/*DESKTOP*/
+@media screen and (min-width: 900px) and (max-width: 1022px) {
+  .container-movies {
+    h2.top-movies,
+    h2.popular-movies {
+      padding-left:  2em;
+      font-size: map-get(map-get($tablet, font-size), title1);
+    }
+
+    .movie-card-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 84vw;
+      height: 700px;
+      padding: 20px 0;
+      gap: 30px;
+      overflow-y: hidden;
+    }
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .container-movies {
+    h2.top-movies,
+    h2.popular-movies {
+      padding-left:  2em;
+      font-size: map-get(map-get($tablet, font-size), title1);
+    }
+
+    .movie-card-container {
+      width: 84vw;
+      height: 600px;
+    }
+  }
 }

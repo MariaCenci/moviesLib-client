@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import Carousel from "../../components/Carousel"
 import MovieCard from "../../components/MovieCard";
+
 import "../../main.scss";
 import "./home.scss";
 
@@ -66,9 +67,9 @@ const Home = () => {
           {topMovies.length === 0 && <p>Loading...</p>}
           {topMovies.length > 0 && (
             <div className="movie-card-container">
-              {topMovies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
+
+                <Carousel movies={topMovies} /> 
+          
             </div>
           )}
         </div>
@@ -79,9 +80,9 @@ const Home = () => {
           {popularMovies.length === 0 && <p>Loading...</p>}
           {popularMovies.length > 0 && (
             <div className="movie-card-container">
-              {popularMovies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
+           
+                <Carousel movies={popularMovies} />
+              
             </div>
           )}
         </div>

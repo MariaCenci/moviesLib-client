@@ -28,12 +28,13 @@ import "./search.scss";
 
   return (
     <>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           id="search"
           value={search}
-          placeholder="Search a movie"
+          placeholder="Search"
           onChange={(e) =>{
            setSearch(e.target.value)
             
@@ -49,21 +50,10 @@ import "./search.scss";
           onClick={handleIconClick}
         />
       </button>
+     
     </>
   );
 };
 
 
 export default SearchBar
-/*
-<Search search={search}/>
-
-<input 
-    type="text" 
-    id="search" 
-    value={search}
-    placeholder='Search a movie'
-    onChange={(e)=> setSearch(e.target.value)}
-    />
-
-    } */

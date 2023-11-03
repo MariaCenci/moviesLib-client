@@ -38,3 +38,7 @@ export type Movie = {
     name: string
     
   }
+
+  export type CarouselProps = {
+movies?: Movie[]
+  }

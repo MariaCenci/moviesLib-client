@@ -1,44 +1,40 @@
 $global-fonts: (
   font-body: "Poppins",
-  font-logo: "Montserrat",
-  font-hero: "Poppins",
+  font-logo: "Oswald",
+  font-title: "Arial",
 );
 
 $colors: (
   color-primary: black,
   color-secondary: white,
   color-tertiary: rgb(75, 74, 74),
+  color-search: rgb(185, 184, 120),
   color-rating:  rgb(52, 7, 157),
-  bg-section: rgba(246, 246, 246, 0.851),
-  separator-line: rgba(133, 133, 133, 0.677),
-  color-blue: #001c4a,
-  color-hover: rgb(52, 81, 129),
 
-  color: (
-    body: rgb(120, 120, 120),
-  ),
 );
 
 $mobile: (
   font-size: (
     body: 1.1em,
-    logo: 1.2em,
-    title1: 2.5em,
-    title2: 1.2em,
-    title3: 1.8em,
-    subtitle: 1.1em,
-    subtitle-about: 1.3em,
-    project-title: 1.3em,
+    logo: .8em,
+    title1: 1.3em,
+    title2: .9em,
+    title3: .7em,
+   title4: .6em,
   ),
 );
 
 $tablet: (
   font-size: (
     body: 1.1em,
-    title1: 3em,
-    title3: 2.1em,
+    logo: 1.1em,
+    title1: 1.6em,
+    title2: 1.2em,
+    title3: 1.1em,
+    title4: 1em,
+    subtitle: .8em,
 
-    subtitle-about: 1.5em,
+  
   ),
 );
 
@@ -47,7 +43,6 @@ $desktop: (
     body: 1.1em,
     title1: 3.5em,
     title3: 2.1em,
-  
-    subtitle-about: 1.6em,
+
   ),
 );

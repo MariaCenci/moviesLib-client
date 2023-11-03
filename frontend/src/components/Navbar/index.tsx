@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BiMovie } from "react-icons/bi";
-import "./index.scss";
+import "./navbar.scss";
 import SearchBar  from "../SearchBar";
 import HamburguerMenu from "../hamburguerMenu";
 
@@ -10,13 +10,13 @@ const Navbar: React.FC = () => {
     <nav id="navbar">
       <div className="container-logo">
         <Link to="/">
-          <span className="logo">MyMovie🎬</span>
+          <span className="logo">🎬MoviesLib </span>
         </Link>
       </div>
 
       <div className="search">
         <SearchBar  />
-      </div> 
+   </div>
        <HamburguerMenu />
     </nav>
   );
