@@ -12,6 +12,43 @@ const PORT = 4000;
 
 app.use(express.json());
 
+
+
+app.post("/api/register", async(req, res) => {
+
+try{
+  const {email, password} = req.body
+
+  /*
+const findUser = await prisma.user.findUnique({
+where:{
+  email: email,
+}
+
+})
+*/
+
+const createUser = await prisma.user.create({
+  data:{
+    email: email,
+    password: password,
+  }
+})
+
+
+res.status(201).send('user registered successfully')
+
+
+} catch(error){
+  res.status(400).send({msg: error})
+}
+
+
+})
+
+
+
+
 /*get fav movies */
 app.get("/api/favoriteMovies/:user_id", async (req, res) => {
   try {
@@ -135,6 +172,7 @@ app.delete("/api/removeFavorite", async (req, res) => {
       .send(console.log(error) + "error at removing movie from favorite");
   }
 });
+
 
 app.get("/api/user/:userId", async (req, res) => {
   const userId = req.params.userId; // Você pode usar isso para encontrar o usuário no banco de dados.

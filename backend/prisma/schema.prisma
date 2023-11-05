@@ -12,7 +12,8 @@ datasource db {
 
 model User {
   user_id  Int    @id @default(autoincrement())
-  email    String
+  email    String 
+  password String
 
   FavoriteMovie FavoriteMovie[]
 }
