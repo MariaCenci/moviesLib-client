@@ -19,17 +19,11 @@ async function main() {
 
   const user1 = await prisma.user.create({
     data: {
-      email: "teste@teste.com",
+      email: "teste@gmail.com",
+      passwordHash: 'aa'
     },
   });
   console.log(user1, "created new user");
-
-  const user2 = await prisma.user.create({
-    data: {
-      email: "teste@teste.com",
-    },
-  });
-  console.log(user2, "created new user");
 
   await printUsers();
 }

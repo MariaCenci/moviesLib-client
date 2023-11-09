@@ -11,18 +11,19 @@ datasource db {
 }
 
 model User {
-  user_id  Int    @id @default(autoincrement())
-  email    String 
-  password String
+  userId      String    @id @default(cuid())
+  email    String @unique
+  passwordHash String
 
   FavoriteMovie FavoriteMovie[]
 }
 
 model FavoriteMovie {
-  id Int  @id 
-  user     User   @relation(fields: [user_id], references: [user_id])
-  original_title       String
-vote_average Float?
-poster_path String?
-  user_id Int
+  id             Int     @id
+  user           User    @relation(fields: [userId], references: [userId])
+  original_title String
+  vote_average   Float?
+  poster_path    String?
+
+  userId         String
 }
