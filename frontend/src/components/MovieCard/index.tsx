@@ -1,17 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import axios from "axios";
-
+import "firebase/auth";
 import "./movieCard.scss";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
-
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { MovieCardProps, Movie, MovieType } from "../../types/interfaces";
+import { MovieCardProps } from "../../types/interfaces";
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true, userId }) => {
   const imgURL = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
     : "";
@@ -27,56 +24,67 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true }) => {
 
   const [favorite, setFavorite] = useState(false);
 
-  const userId = 1;
 
-useEffect(() => {
-  const getFavoriteMovies = async () => {
+
+ 
+
+  useEffect(() => {
+    const getFavoriteMovies = async () => {
+      try {
+        const response = await api.get(`/api/favoriteMovies/${userId}`);
+        const favoriteMovies = response.data;
+
+        const isFavorite = favoriteMovies.some(
+          (favMovie) => favMovie.id === movie.id
+        );
+        setFavorite(isFavorite);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getFavoriteMovies();
+  }, [movie.id]);
+
+  const addFavoriteMovie = async (
+    userId: string,
+    id: number,
+    original_title: string,
+    poster_path: string
+  ) => {
     try {
-      const response = await api.get(`/api/favoriteMovies/${userId}`);
-      const favoriteMovies = response.data;
-      // Verifique se o filme atual está na lista de favoritos e atualize o estado 'favorite' de acordo.
-      const isFavorite = favoriteMovies.some(favMovie => favMovie.id === movie.id);
-      setFavorite(isFavorite);
+      if (userId !== null) {
+        const response = await api.post(
+          `/api/addFavorite`,
+          {
+               id,
+            userId,
+            original_title,
+            poster_path,
+            
+           
+          }
+        );
+        console.log(response.data);
+        console.log("userId:", userId);
+        console.log('added to favorites')
+      }
     } catch (error) {
-      console.log(error);
+      console.log({ msg: error });
     }
   };
 
-  getFavoriteMovies();
-}, [movie.id]); 
-
-
-const addFavoriteMovie = async (
-  user_id: number,
-  id: number,
-  original_title: string,
-  poster_path: string
-) => {
-  try {
-    const response = await api.post("/api/addFavorite", {
-      user_id,
-      id,
-      original_title,
-      poster_path,
-    });
-
-    console.log(response.data);
-  } catch (error) {
-    console.log({ msg: error });
-  }
-};
-
-
-  const removeFavorite = async (user_id: number, id: number) => {
+  const removeFavorite = async (userId: string, id: number) => {
     try {
-      const response = await api.delete("/api/removeFavorite", {
-        data: {
-          user_id,
-          id,
-        },
-      });
-
-      console.log(response.data);
+      if (userId !== null) {
+        const response = await api.delete("/api/removeFavorite", {
+          data: {
+            userId,
+            id,
+          },
+        });
+        console.log(response.data);
+      }
     } catch (error) {
       console.log({ msg: error });
     }
@@ -84,22 +92,28 @@ const addFavoriteMovie = async (
 
   const toggleFavorite = async () => {
     try {
-      if (favorite) {
-        // Remover filme dos favoritos
-        await removeFavorite(userId, movie.id);
-      } else {
-        // Adicionar filme aos favoritos
-        await addFavoriteMovie(userId, movie.id, movie.original_title!, movie.poster_path!);
+     
+        // Verifique se userId não é nulo
+        if(userId !== null){
+           if (favorite) {
+          removeFavorite(userId, movie.id);
+        } else {
+          addFavoriteMovie(
+            userId,
+            movie.id,
+            movie.original_title!,
+            movie.poster_path!
+          );
+        }
+        
+        setFavorite(!favorite);
       }
-  
-      // Alterar o estado 'favorite' localmente após a atualização bem-sucedida
-      setFavorite(!favorite);
-    } catch (error) {
-      console.log('Erro ao marcar/desmarcar favorito:', error);
+        }
+       
+     catch (error) {
+      console.log("Erro ao marcar/desmarcar favorito:", error);
     }
   };
-  
-
   return (
     <>
       <div className="card" key={movie.id}>

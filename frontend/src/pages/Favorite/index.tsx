@@ -1,16 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import FavoriteMovieCard from "../../components/FavoriteMovieCard";
-import { Movie, MovieCardProps, MovieType } from "../../types/interfaces";
+import { Movie, FavoriteProps} from "../../types/interfaces";
 import "./favorite.scss";
 import axios from "axios";
 
-const Favorite = () => {
+const Favorite: React.FC <FavoriteProps> = () => {
+
   const api = axios.create({
     baseURL: "http://localhost:4000",
   });
 
-  const userId = 1;
+  const userId = localStorage.getItem('userId');
 
   const [favorites, setFavorites] = useState<Movie[]>([]);
 
@@ -23,8 +24,11 @@ const Favorite = () => {
   useEffect(() => {
     const fetchFavoriteMovies = async () => {
       try {
+        if(userId){
+            }
         const response = await api.get(`/api/favoriteMovies/${userId}`);
         setFavorites(response.data);
+      
       } catch (error) {
         console.log(error);
       }
@@ -44,7 +48,8 @@ const Favorite = () => {
           favorites.map((movie) => (
             <FavoriteMovieCard 
             key={movie.id}
-             movie={movie}
+            //@ts-ignore
+            movie={movie}
              updateFavorites={updateFavorites}/>
               
           ))}

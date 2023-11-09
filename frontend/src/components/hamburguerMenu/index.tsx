@@ -47,10 +47,10 @@ setActiveMenu(false)
                 <Link to="/"  onClick={closeMenu} >Home</Link>
               </li>
               <li>
-                <Link to="/favorite" onClick={closeMenu}>Favorite</Link >
+                <Link to="/favorite" onClick={closeMenu}>Favorites</Link >
               </li>
               <li>
-                <Link to="/watchlist" onClick={closeMenu}>Watch later</Link>
+                <Link to="/watchlist" onClick={closeMenu}>Watch list</Link>
               </li>
             
             </ul>

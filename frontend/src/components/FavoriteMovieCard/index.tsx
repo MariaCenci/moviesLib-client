@@ -75,6 +75,7 @@ export default FavoriteMovieCard;
 
 import React, { useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 import { MovieCardProps, Movie, MovieType } from "../../types/interfaces";
 import "./favmoviecard.scss";
 
@@ -90,16 +91,21 @@ const FavoriteMovieCard: React.FC<MovieCardProps> = ({
     baseURL: "http://localhost:4000",
   });
 
-  const userId = 1;
+
 
   const [isFavorite, setIsFavorite] = useState(true); // Use um estado para rastrear se o filme é favorito
+
+ 
+  const location = useLocation();
+  const userId = location.state?.userId;
+
 
   const toggleFavoriteRemove = async () => {
     if (isFavorite) {
       try {
         const response = await api.delete("/api/removeFavorite", {
           data: {
-            user_id: userId,
+            userId: userId,
             id: movie.id,
           },
         });

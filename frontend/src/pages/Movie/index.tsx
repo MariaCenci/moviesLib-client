@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import MovieCard from "../../components/MovieCard";
 import axios from "axios";
-
 import "./movie.scss";
-
-import { TbFileDescription } from "react-icons/tb";
-import { FaTheaterMasks } from "react-icons/fa";
-import { AiOutlineCalendar } from "react-icons/ai";
-import { BiTimeFive, BiMoneyWithdraw } from "react-icons/bi";
-import { MovieCardProps, MovieType, Genre } from "../../types/interfaces";
+import {  MovieType, Genre } from "../../types/interfaces";
 
 const Movie: React.FC = () => {
   const movieURL = "https://api.themoviedb.org/3/movie/";

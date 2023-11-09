@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   return (
     <nav id="navbar">
       <div className="container-logo">
-        <Link to="/">
+        <Link to="/home">
           <span className="logo">🎬MoviesLib </span>
         </Link>
       </div>

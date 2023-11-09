@@ -10,8 +10,9 @@ export interface MovieType{
     poster_path?: string,
   vote_average?: string,
   original_title?: string,
- 
+  userId: string | null
     budget?: number 
+  movie: string[]
   
   }
 
@@ -19,9 +20,10 @@ export interface MovieType{
   
 
   export interface MovieCardProps {
-    movie: MovieType
+    movie: MovieType 
     showBtn?: boolean,
           updateFavorites?: (updatedFavorites: MovieType[]) => void;   
+          userId: string
        
   }
 
@@ -29,7 +31,7 @@ export interface MovieType{
 export type Movie = {
     id: number,
     favorite?: boolean,
- 
+userId?: string | null,
 
   }
 
@@ -40,5 +42,11 @@ export type Movie = {
   }
 
   export type CarouselProps = {
-movies?: Movie[]
+movies?: Movie[],
+userId: string
+  }
+
+  export type FavoriteProps = {
+   
+    userId?: string
   }

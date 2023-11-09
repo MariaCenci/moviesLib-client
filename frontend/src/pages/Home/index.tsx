@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Carousel from "../../components/Carousel"
 import MovieCard from "../../components/MovieCard";
 
@@ -18,6 +19,21 @@ const Home = () => {
   const [topMovies, setTopMovies] = useState<Movie[]>([]);
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
   //const [loading, setLoading] = useState(true);
+
+  const location = useLocation();
+  
+
+
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Recupera o userId do localStorage
+    const storedUserId = localStorage.getItem('userId');
+    // Define o userId no estado, se existir
+    if (storedUserId) {
+      setUserId(storedUserId);
+    }
+  }, []); 
 
   const getTopMovies = async (url: string) => {
     try {
@@ -68,7 +84,7 @@ const Home = () => {
           {topMovies.length > 0 && (
             <div className="movie-card-container">
 
-                <Carousel movies={topMovies} /> 
+                <Carousel movies={topMovies} userId = {userId!} /> 
           
             </div>
           )}
@@ -81,7 +97,7 @@ const Home = () => {
           {popularMovies.length > 0 && (
             <div className="movie-card-container">
            
-                <Carousel movies={popularMovies} />
+                <Carousel movies={popularMovies} userId={userId!} />
               
             </div>
           )}

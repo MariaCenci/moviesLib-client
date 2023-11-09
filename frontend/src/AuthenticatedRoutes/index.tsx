@@ -11,6 +11,7 @@ import NavBar from "../components/Navbar";
 import Navbar from '../components/Navbar';
 
 const AutheticatedRoutes = () => {
+
   return (
     <>     
     
