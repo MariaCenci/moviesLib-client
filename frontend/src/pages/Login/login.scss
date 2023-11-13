@@ -8,11 +8,7 @@
   justify-content: center;
   flex-direction: column;
   color: white;
-  background: linear-gradient(
-    180deg,
-    rgb(54, 54, 56) 0%,
-    rgb(6, 18, 58) 80%
-  );
+  background: map-get($colors, background-login);
 }
 .container .header {
   display: flex;

@@ -19,16 +19,16 @@
     color: map-get($colors, color-secondary);
     font-size: map-get(map-get($mobile, font-size), title1);
     text-shadow: 1px 1px 15px black;
-    padding: 40px 0 0 40px;
+    padding: 40px 0 0 54px;
     font-family: map-get($global-fonts, font-title);
   }
 
   .movie-card-container {
     overflow-x: auto;
     white-space: nowrap;
-    width: 90vw;
+    width: 106vw;
 
-    height: 450px;
+    height: 490px;
     padding: 20px 10px;
 
     overflow-y: hidden;
@@ -37,11 +37,17 @@
 
 @media screen and (min-width: 450px) and (max-width: 767px) {
   .container-movies {
+    h2.top-movies,
+    h2.popular-movies {
+      padding-left:  1.6em;
+      font-size: map-get(map-get($tablet, font-size), title1);
+    }
+
     .movie-card-container {
       overflow-x: auto;
       white-space: nowrap;
       width: 90vw;
-      height: 480px;
+      height: 560px;
       padding: 20px 0;
       gap: 30px;
       overflow-y: hidden;

@@ -14,9 +14,9 @@
   background-color: map-get($colors, color-secondary);
   transition: 0.5s;
   border-radius: 15px;
-
 right: 8%;
   top: 46%;
+  cursor: pointer;
 }
 
 .hamburguer-icon::before {
@@ -45,10 +45,19 @@ ul.list-pages li {
 }
 
 ul.list-pages li a {
+ font-size: map-get(map-get($mobile, font-size), title2);
   text-decoration: none;
   color: white;
   background-color: transparent;
+  cursor: pointer;
+
 }
+
+ul.list-pages li a:hover{
+  color: map-get($colors, color-hover);
+  transition: .3s;
+}
+
 
 .menu-list {
   @include flex-center;
@@ -73,6 +82,9 @@ ul.list-pages li a {
   margin-bottom: 50px;
   font-size: 1.2em;
   font-family: map-get($global-fonts, font-body);
+
+
+
 }
 
 .toggleActive .hamburguer-icon {
@@ -104,7 +116,7 @@ ul.list-pages li a {
 }
 
 .menuOpen {
-  background-color: map-get($colors, color-primary);
+  background: map-get($colors, background-login);
   position: absolute;
   position: fixed;
 
@@ -115,6 +127,7 @@ ul.list-pages li a {
   width: 100%;
   z-index: 2;
 }
+
 
 
 @media screen and (min-width: 900px)  {
