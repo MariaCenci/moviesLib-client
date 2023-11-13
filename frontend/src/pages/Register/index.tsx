@@ -10,15 +10,17 @@ const Register: React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-  
+  const [error, setError] = useState("");
+const navigate = useNavigate()
+
       const api = axios.create({
         baseURL: "http://localhost:4000",
       });
 
+
+
     const handleRegister = async () => {
-
-
-
+   
       try {
         const response = await api.post('/register', {
           email,
@@ -27,10 +29,13 @@ const Register: React.FC = () => {
   
         if (response.status === 201) {
           setMessage("User registered successfully");
+          navigate('/userLogin')
         }
       } catch (error) {
+        console.log('error during registration')
         if (error.response) {
           setMessage(error.response.data.error);
+          setError(error.response.data.error);
         } else {
           setMessage("An error occurred during registration.");
         }
@@ -64,6 +69,7 @@ const Register: React.FC = () => {
             id="password"
             placeholder="********************"
             onChange={(e) => setPassword(e.target.value)}
+            
           />
         </div>
 
@@ -74,6 +80,7 @@ const Register: React.FC = () => {
           <p>Already have an account?</p>
           <Link to="/userLogin">Login</Link>
         </div>
+        <p style={{ color: 'red' }}>{error}</p>
       </form>
     </div>
   );

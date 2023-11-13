@@ -6,16 +6,16 @@
 
   width: 60vw;
 
- min-height: 40vh;
+  min-height: 40vh;
   margin-bottom: 50px;
   padding: 10px;
   margin: 5px;
   position: relative;
-  background-color: rgb(26, 26, 26);
-  box-shadow: 1px 1px 15px black;
- 
+  background-color: map-get($colors, color-card);
+  box-shadow: 1px 1px 14px rgb(0, 0, 0);
+  border-radius: 8px;
+  border: 0.5px solid rgba(80, 80, 80, 0.254);
 }
-
 
 img.img-movies {
   justify-content: center;
@@ -31,10 +31,11 @@ h2.movie-title {
   color: map-get($colors, color-secondary);
   text-wrap: wrap;
   text-shadow: 1px 1px 10px black;
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 15px;
+  padding: 2px;
   background-color: rgba(255, 255, 255, 0);
-  height: 2.3em;
+  height: 2.5em;
 }
 
 /*VOTES*/
@@ -54,8 +55,8 @@ h2.movie-title {
     border-radius: 50%;
     background-color: map-get($colors, color-rating);
     box-shadow: 2px 2px 9px rgba(4, 4, 4, 0.91);
-    width: 3em;
-    height: 3em;
+    width: 3.3em;
+    height: 3.3em;
   }
 }
 
@@ -63,6 +64,7 @@ h2.movie-title {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 15px;
 
   .container-favorite-btn {
     display: flex;
@@ -70,6 +72,7 @@ h2.movie-title {
     align-items: center;
     width: 100%;
     margin-bottom: 15px;
+    padding: 5px;
 
     #favorite-btn {
       display: flex;
@@ -82,6 +85,18 @@ h2.movie-title {
 
       svg {
         width: 1em;
+      }
+    }
+
+    #addList-btn {
+      background-color: transparent;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 2.2em;
       }
     }
   }
@@ -102,7 +117,7 @@ h2.movie-title {
   .link-see-more {
     border: none;
     border-radius: 5px;
-    background: linear-gradient(90deg, rgb(15, 4, 81), rgb(46, 33, 193));
+    background: linear-gradient(100deg, rgb(17, 8, 73), rgb(53, 45, 150));
     color: rgb(255, 255, 255);
     cursor: pointer;
 
@@ -112,7 +127,7 @@ h2.movie-title {
   }
 
   .link-see-more:hover {
-    background: rgba(16, 84, 192, 0.706);
+    background: map-get($colors, color-rating);
     transition: 0.4s;
   }
 }
@@ -127,9 +142,9 @@ h2.movie-title {
     margin-bottom: 50px;
     padding: 14px;
 
-h2.movie-title{
-  font-size: map-get(map-get($tablet, font-size), subtitle);
-}
+    h2.movie-title {
+      font-size: map-get(map-get($tablet, font-size), subtitle);
+    }
 
     .img-movies {
       width: 140px;
@@ -138,7 +153,6 @@ h2.movie-title{
     /*VOTES*/
     .container-rating {
       font-size: map-get(map-get($mobile, font-size), title3);
-
     }
 
     .container-main {
@@ -152,13 +166,11 @@ h2.movie-title{
 
       /*SEE MORE BTN*/
       .container-see-more {
-       a {
+        a {
           text-decoration: none;
           font-size: map-get(map-get($mobile, font-size), title2);
         }
         .link-see-more {
-     
-
           min-height: 25px;
           text-align: center;
           padding: 5px;
@@ -171,81 +183,56 @@ h2.movie-title{
 /*TABLET*/
 @media screen and (min-width: 768px) and (max-width: 899px) {
   .card {
-
     width: 700px;
     height: 500px;
-
 
     .img-movies {
       width: 180px;
     }
 
+    h2.movie-title {
+      font-size: map-get(map-get($tablet, font-size), subtitle);
+    }
 
-h2.movie-title{
-  font-size: map-get(map-get($tablet, font-size), title4);
-}
-
-
-.container-see-more {
-  a {
-     text-decoration: none;
-     font-size: map-get(map-get($tablet, font-size), title4);
-   }
-
-
-  }
-
-
+    .container-see-more {
+      a {
+        text-decoration: none;
+        font-size: map-get(map-get($tablet, font-size), title4);
+      }
+    }
   }
 }
 
 /*DESKTOP*/
 @media screen and (min-width: 900px) {
   .card {
-
-
     width: 700px;
     height: 540px;
-    
 
     .img-movies {
       width: 190px;
     }
 
+    h2.movie-title {
+      font-size: map-get(map-get($tablet, font-size), title4);
+    }
 
-h2.movie-title{
-  font-size: map-get(map-get($tablet, font-size), title4);
-}
-
-
-
-
-.container-see-more {
-  a {
-     text-decoration: none;
-     font-size: map-get(map-get($tablet, font-size), title4);
-   }
-
-
-  }
-
-
+    .container-see-more {
+      a {
+        text-decoration: none;
+        font-size: map-get(map-get($tablet, font-size), title4);
+      }
+    }
   }
 }
-
 
 @media screen and (min-width: 1023px) {
   .card {
-
-
     width: 700px;
     height: 480px;
-    
 
     .img-movies {
       width: 170px;
     }
   }
-
-
 }

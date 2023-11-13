@@ -8,7 +8,11 @@ import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { MovieCardProps } from "../../types/interfaces";
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true, userId }) => {
+const MovieCard: React.FC<MovieCardProps> = ({
+  movie,
+  showBtn = true,
+  userId,
+}) => {
   const imgURL = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
     : "";
@@ -23,10 +27,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true, userId }) 
   });
 
   const [favorite, setFavorite] = useState(false);
-
-
-
- 
+  const [watchlist, setMovieWatchList] = useState(false)
 
   useEffect(() => {
     const getFavoriteMovies = async () => {
@@ -48,39 +49,61 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true, userId }) 
 
   const addFavoriteMovie = async (
     userId: string,
-    id: number,
+    movieId: number,
     original_title: string,
     poster_path: string
   ) => {
     try {
       if (userId !== null) {
-        const response = await api.post(
-          `/api/addFavorite`,
-          {
-               id,
-            userId,
-            original_title,
-            poster_path,
-            
-           
-          }
-        );
+        const response = await api.post(`/api/addFavorite`, {
+          userId,
+          movieId,
+          original_title,
+          poster_path,
+        });
         console.log(response.data);
         console.log("userId:", userId);
-        console.log('added to favorites')
+        console.log("added to favorites");
       }
     } catch (error) {
       console.log({ msg: error });
     }
   };
 
-  const removeFavorite = async (userId: string, id: number) => {
+
+
+  const addMovieToWatchList = async (
+    userId: string,
+    movieId: number,
+    original_title: string,
+    poster_path: string
+  ) => {
     try {
       if (userId !== null) {
-        const response = await api.delete("/api/removeFavorite", {
+        const response = await api.post(`/api/addToWatchList`, {
+          userId,
+          movieId,
+          original_title,
+          poster_path,
+        });
+        console.log(response.data);
+        console.log("userId:", userId);
+        console.log("added to wtachList");
+      }
+    } catch (error) {
+      console.log({ msg: error });
+    }
+  };
+
+
+
+  const removeFromWatchList = async (userId: string, movieId: number) => {
+    try {
+      if (userId !== null) {
+        const response = await api.delete("/api/removeFromWatchList", {
           data: {
             userId,
-            id,
+            movieId,
           },
         });
         console.log(response.data);
@@ -90,12 +113,51 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true, userId }) 
     }
   };
 
+
+
+  const removeFavorite = async (userId: string, movieId: number) => {
+    try {
+      if (userId !== null) {
+        const response = await api.delete("/api/removeFavorite", {
+          data: {
+            userId,
+            movieId,
+          },
+        });
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log({ msg: error });
+    }
+  };
+
+
+  const toggleWatchList = async () => {
+    try {
+      if (userId !== null) {
+        if (watchlist) {
+          removeFromWatchList(userId, movie.id);
+        } else {
+          addMovieToWatchList(
+            userId,
+            movie.id,
+            movie.original_title!,
+            movie.poster_path!
+          );
+        }
+
+        setMovieWatchList(!watchlist);
+        console.log("state changed");
+      }
+    } catch (error) {
+      console.log("Error adding to watch list:", error);
+    }
+  };
+
   const toggleFavorite = async () => {
     try {
-     
-        // Verifique se userId não é nulo
-        if(userId !== null){
-           if (favorite) {
+      if (userId !== null) {
+        if (favorite) {
           removeFavorite(userId, movie.id);
         } else {
           addFavoriteMovie(
@@ -105,12 +167,11 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true, userId }) 
             movie.poster_path!
           );
         }
-        
+
         setFavorite(!favorite);
+        console.log("state changed");
       }
-        }
-       
-     catch (error) {
+    } catch (error) {
       console.log("Erro ao marcar/desmarcar favorito:", error);
     }
   };
@@ -133,6 +194,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, showBtn = true, userId }) 
                 icon={favorite ? faStar : farStar}
                 style={{ color: "#ffffff" }}
               />
+            </button>
+            <button id="addList-btn" onClick={toggleWatchList}>
+              <img src="src/icons/addList.png" alt="" />
             </button>
           </div>
 

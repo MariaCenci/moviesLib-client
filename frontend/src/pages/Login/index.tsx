@@ -17,6 +17,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userId, setUserId] = useState<string | undefined>(undefined)
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -36,6 +37,7 @@ localStorage.setItem('userId', userId);
       console.log(userId)
     } catch (error) {
       console.error("Erro ao fazer login", error);
+      setError(error.response.data.error);
     }
   };
 
@@ -173,6 +175,11 @@ useEffect(()=>{
           <button type="submit" className="button">
             Login <img src="src/icons/arrow.png" alt="->" />
           </button>
+          <div className="footer">
+          <p>Don't have an account?</p>
+          <Link to="/userRegister">Sign in</Link>
+        </div>
+        <p style={{ color: 'red' }}>{error}</p>
         </form>
       </div>
     </>

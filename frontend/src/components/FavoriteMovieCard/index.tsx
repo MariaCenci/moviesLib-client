@@ -106,7 +106,7 @@ const FavoriteMovieCard: React.FC<MovieCardProps> = ({
         const response = await api.delete("/api/removeFavorite", {
           data: {
             userId: userId,
-            id: movie.id,
+            movieId: movie.id,
           },
         });
 

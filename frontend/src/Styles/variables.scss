@@ -7,16 +7,17 @@ $global-fonts: (
 $colors: (
   color-primary: black,
   color-secondary: white,
-  color-tertiary: rgb(75, 74, 74),
+  color-tertiary: rgb(60, 60, 60),
   color-search: rgb(185, 184, 120),
   color-rating:  rgb(52, 7, 157),
+  color-card: rgba(0, 0, 0, 0.665),
 
 );
 
 $mobile: (
   font-size: (
     body: 1.1em,
-    logo: .8em,
+    logo: .7em,
     title1: 1.3em,
     title2: .9em,
     title3: .7em,
@@ -32,8 +33,8 @@ $tablet: (
     title1: 1.6em,
     title2: 1.2em,
     title3: 1.1em,
-    title4: 1em,
-    subtitle: .8em,
+    title4: .8em,
+    subtitle: .9em,
 
   
   ),

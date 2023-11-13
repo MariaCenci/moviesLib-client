@@ -27,9 +27,9 @@ const Home = () => {
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Recupera o userId do localStorage
+  
     const storedUserId = localStorage.getItem('userId');
-    // Define o userId no estado, se existir
+ 
     if (storedUserId) {
       setUserId(storedUserId);
     }

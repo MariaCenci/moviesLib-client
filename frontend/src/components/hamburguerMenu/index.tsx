@@ -44,7 +44,7 @@ setActiveMenu(false)
           <div className="menu-list">
             <ul className="list-pages">
             <li>
-                <Link to="/"  onClick={closeMenu} >Home</Link>
+                <Link to="/home"  onClick={closeMenu} >Home</Link>
               </li>
               <li>
                 <Link to="/favorite" onClick={closeMenu}>Favorites</Link >

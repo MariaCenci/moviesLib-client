@@ -23,6 +23,7 @@ export interface MovieType{
     movie: MovieType 
     showBtn?: boolean,
           updateFavorites?: (updatedFavorites: MovieType[]) => void;   
+          updateWatchList?: (updatedWatchList: MovieType[]) => void;   
           userId: string
        
   }
@@ -47,6 +48,12 @@ userId: string
   }
 
   export type FavoriteProps = {
+   
+    userId?: string
+  }
+
+
+  export type WatchListProps = {
    
     userId?: string
   }
