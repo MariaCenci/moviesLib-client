@@ -9,7 +9,7 @@
 }
 
 body{
-    background-color:  rgb(24, 24, 35);
+    background: map-get($colors, background-body);
     font-size: map-get(map-get($mobile, font-size),body);
 }
 /*TABLET*/

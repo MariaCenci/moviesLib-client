@@ -2,6 +2,7 @@ $global-fonts: (
   font-body: "Poppins",
   font-logo: "Oswald",
   font-title: "Arial",
+  font-title-movie: "Righteous",
 );
 
 $colors: (
@@ -9,39 +10,36 @@ $colors: (
   color-secondary: white,
   color-tertiary: rgb(60, 60, 60),
   color-search: rgb(185, 184, 120),
-  color-rating:  rgb(52, 7, 157),
+  color-rating: rgb(52, 7, 157),
   color-card: rgba(0, 0, 0, 0.665),
   color-hover: rgba(221, 238, 255, 0.915),
-  background-login: linear-gradient(
-    180deg,
-    rgb(54, 54, 56) 0%,
-    rgb(6, 18, 58) 80%),
-
+  background-login:
+    linear-gradient(180deg, rgb(54, 54, 56) 0%, rgb(6, 18, 58) 80%),
+  background-body:
+    linear-gradient(90deg, rgb(45, 45, 61) 0%, rgb(16, 19, 38) 90%),
 );
 
 $mobile: (
   font-size: (
     body: 1.1em,
-    logo: .7em,
+    logo: 0.7em,
     title1: 1.3em,
-    title2: .9em,
-    title3: .7em,
-   title4: .6em,
-   title5: 1.8em
+    title2: 0.9em,
+    title3: 0.7em,
+    title4: 0.6em,
+    title5: 1.6em,
   ),
 );
 
 $tablet: (
   font-size: (
     body: 1.1em,
-    logo: 1.1em,
+    logo: 1em,
     title1: 1.6em,
     title2: 1.2em,
-    title3: 1.1em,
-    title4: .8em,
-    subtitle: .9em,
-
-  
+    title3: 0.8em,
+    title4: 0.7em,
+    
   ),
 );
 
@@ -50,6 +48,5 @@ $desktop: (
     body: 1.1em,
     title1: 3.5em,
     title3: 2.1em,
-
   ),
 );

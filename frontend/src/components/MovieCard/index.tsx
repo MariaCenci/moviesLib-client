@@ -27,10 +27,12 @@ const MovieCard: React.FC<MovieCardProps> = ({
   });
 
   const [favorite, setFavorite] = useState(false);
-  const [watchlist, setMovieWatchList] = useState(false)
+  const [watchlist, setMovieWatchList] = useState(false);
+
 
   useEffect(() => {
     const getFavoriteMovies = async () => {
+      
       try {
         const response = await api.get(`/api/favoriteMovies/${userId}`);
         const favoriteMovies = response.data;
@@ -43,9 +45,10 @@ const MovieCard: React.FC<MovieCardProps> = ({
         console.log(error);
       }
     };
+    
 
     getFavoriteMovies();
-  }, [movie.id]);
+  }, [movie.id, userId]);
 
   const addFavoriteMovie = async (
     userId: string,
@@ -70,8 +73,6 @@ const MovieCard: React.FC<MovieCardProps> = ({
     }
   };
 
-
-
   const addMovieToWatchList = async (
     userId: string,
     movieId: number,
@@ -95,9 +96,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
     }
   };
 
-
-
-  const removeFromWatchList = async (userId: string, movieId: number) => {
+  /*const removeFromWatchList = async (userId: string, movieId: number) => {
     try {
       if (userId !== null) {
         const response = await api.delete("/api/removeFromWatchList", {
@@ -112,8 +111,6 @@ const MovieCard: React.FC<MovieCardProps> = ({
       console.log({ msg: error });
     }
   };
-
-
 
   const removeFavorite = async (userId: string, movieId: number) => {
     try {
@@ -130,21 +127,20 @@ const MovieCard: React.FC<MovieCardProps> = ({
       console.log({ msg: error });
     }
   };
-
-
+*/
   const toggleWatchList = async () => {
     try {
       if (userId !== null) {
-        if (watchlist) {
-          removeFromWatchList(userId, movie.id);
-        } else {
+       // if (watchlist) {
+        //  removeFromWatchList(userId, movie.id);
+      //  } else {
           addMovieToWatchList(
             userId,
             movie.id,
             movie.original_title!,
             movie.poster_path!
           );
-        }
+        //}
 
         setMovieWatchList(!watchlist);
         console.log("state changed");
@@ -157,24 +153,26 @@ const MovieCard: React.FC<MovieCardProps> = ({
   const toggleFavorite = async () => {
     try {
       if (userId !== null) {
-        if (favorite) {
-          removeFavorite(userId, movie.id);
-        } else {
+        //if (favorite) {
+      //    removeFavorite(userId, movie.id);
+       // } else {
           addFavoriteMovie(
             userId,
             movie.id,
             movie.original_title!,
             movie.poster_path!
           );
-        }
+      //  }
 
         setFavorite(!favorite);
         console.log("state changed");
+
       }
     } catch (error) {
       console.log("Erro ao marcar/desmarcar favorito:", error);
     }
   };
+
   return (
     <>
       <div className="card" key={movie.id}>
@@ -190,10 +188,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 
           <div className="container-favorite-btn">
             <button id="favorite-btn" onClick={toggleFavorite}>
-              <FontAwesomeIcon
-                icon={favorite ? faStar : farStar}
-                style={{ color: "#ffffff" }}
-              />
+            <img src="src/icons/favorite.png" alt="" />
             </button>
             <button id="addList-btn" onClick={toggleWatchList}>
               <img src="src/icons/addList.png" alt="" />

@@ -5,7 +5,7 @@
   border-radius: 10px;
   width: 7.5em;
   height: 1.2em;
-  margin: 0 .2em;
+  margin: 0 0.1em;
   padding: 6px;
 
   display: flex;
@@ -16,14 +16,14 @@
 input#search {
   font-size: map-get(map-get($mobile, font-size), title4);
 
-  background-color: black;
+  background-color: map-get($colors, color-primary);
   width: 60px;
 }
 
 .search input {
   border: none;
   border-radius: 8px;
-color: map-get($colors, color-secondary);
+  color: map-get($colors, color-secondary);
   outline: 0;
 }
 
@@ -44,64 +44,48 @@ color: map-get($colors, color-secondary);
   cursor: pointer;
 }
 
-
-
-
 @media screen and (min-width: 450px) and (max-width: 767px) {
-.search {
-    width: 12em;
+  .search {
+    width: 10em;
+    height: 1.5em;
+
+    input#search {
+      font-size: map-get(map-get($mobile, font-size), title4);
+
   }
 }
-
+}
 
 /*TABLET*/
 @media screen and (min-width: 768px) and (max-width: 899px) {
   .search {
     width: 14em;
     padding: 10px;
-    
   }
 
   input#search {
-   font-size: map-get(map-get($tablet, font-size), subtitle );
- 
+    font-size: map-get(map-get($tablet, font-size), title4);
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1022px) {
+  .search {
+    width: 14em;
+    height: 1.6em;
   }
 
-}
-
-@media screen and (min-width: 900px) and (max-width: 1022px)  {
-.search{
-width: 14em;
-height: 1.6em;
-
-
-}
-
-
-input#search {
-    font-size: map-get(map-get($tablet, font-size), subtitle );
-  
-   }
- 
-
+  input#search {
+    font-size: map-get(map-get($tablet, font-size), subtitle);
+  }
 }
 
 @media screen and (min-width: 1023px) {
-
-  .search{
+  .search {
     width: 14em;
     height: 1.6em;
-    
-    
-    }
-    
+  }
 
-input#search {
-  font-size: map-get(map-get($tablet, font-size), subtitle );
-
- }
-
-
-
-
+  input#search {
+    font-size: map-get(map-get($tablet, font-size), title4);
+  }
 }

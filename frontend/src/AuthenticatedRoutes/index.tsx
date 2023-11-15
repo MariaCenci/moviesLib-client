@@ -6,6 +6,7 @@ import Search from "../pages/Search";
 import WatchList from "../pages/Watchlist";
 import Favorite from "../pages/Favorite";
 import NavBar from "../components/Navbar";
+import { useLocation } from 'react-router-dom';
 
 
 const AutheticatedRoutes = () => {
@@ -18,7 +19,7 @@ const AutheticatedRoutes = () => {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/movie/:id" element={<Movie />} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search" element={<Search  />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/watchlist" element={<WatchList />} />
           </Routes>

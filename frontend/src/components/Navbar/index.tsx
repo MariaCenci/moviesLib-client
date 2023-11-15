@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BiMovie } from "react-icons/bi";
 import "./navbar.scss";
-import SearchBar  from "../SearchBar";
+import SearchBar from "../SearchBar";
 import HamburguerMenu from "../hamburguerMenu";
 
 const Navbar: React.FC = () => {
@@ -15,24 +15,11 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="search">
-        <SearchBar  />
-   </div>
-       <HamburguerMenu />
+        <SearchBar />
+      </div>
+      <HamburguerMenu />
     </nav>
   );
 };
 
-export default Navbar
-
-/**
- * 
-{
-    ...topMovies.filter(movie=>(
-    movie.text.includes(search)
-      ))  
-    }
-
-
-<Search topMovies={topMovies} setTopMovies={setTopMovies}/>
-
- */
+export default Navbar;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./movie.scss";
-import {  MovieType, Genre } from "../../types/interfaces";
+import { MovieType, Genre } from "../../types/interfaces";
 
 const Movie: React.FC = () => {
   const movieURL = "https://api.themoviedb.org/3/movie/";
@@ -101,7 +101,10 @@ const Movie: React.FC = () => {
                   <span className="release-year">
                     {formatDate(movie.release_date)}
                   </span>
-                  <span className="middle-dot"> <img src="../src/icons/dot.png" alt="" /></span>
+                  <span className="middle-dot">
+                    {" "}
+                    <img src="../src/icons/dot.png" alt="" />
+                  </span>
                   <span className="runtime">{movie.runtime} min </span>
                 </div>
 
@@ -126,6 +129,7 @@ const Movie: React.FC = () => {
               </div>
 
               <div className="movie-info">
+                <h3>Overview</h3>
                 <p className="overview">{movie.overview}</p>
               </div>
             </div>

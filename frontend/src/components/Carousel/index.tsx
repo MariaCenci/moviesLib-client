@@ -44,8 +44,6 @@ const onMouseLeave = () => {
       <div className="carousel-container">
         <div className="card-carousel" ref={containerRef}>
        
-       
-       
           {movies &&
            // @ts-ignore 
             movies.map((card) => <MovieCard userId={userId} key={card.id} movie={card} />)}

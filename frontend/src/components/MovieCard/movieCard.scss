@@ -20,12 +20,13 @@
 img.img-movies {
   justify-content: center;
   align-items: center;
-  width: 30vw;
+  width: 40vw;
+  border-radius: 8px;
 }
 
 h2.movie-title {
   font-size: map-get(map-get($mobile, font-size), title4);
-  font-family: "Righteous", sans-serif;
+  font-family: map-get($global-fonts, font-title-movie), sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: map-get($colors, color-secondary);
@@ -35,7 +36,7 @@ h2.movie-title {
   margin-bottom: 15px;
   padding: 2px;
   background-color: rgba(255, 255, 255, 0);
-  height: 2.5em;
+  height: 3.5em;
 }
 
 /*VOTES*/
@@ -72,8 +73,10 @@ h2.movie-title {
     align-items: center;
     width: 100%;
     margin-bottom: 15px;
-    padding: 5px;
+    padding-top: 10px;
     gap: 14px;
+
+
 
     #favorite-btn {
       display: flex;
@@ -85,9 +88,11 @@ h2.movie-title {
       border: none;
       cursor: pointer;
 
-      svg {
-        width: 1.2em;
+      img {
+        width: 1.6em;
       }
+
+
     }
 
     #addList-btn {
@@ -99,7 +104,7 @@ h2.movie-title {
       cursor: pointer;
 
       img {
-        width: 2em;
+        width: 1.7em;
       }
     }
   }
@@ -145,17 +150,9 @@ h2.movie-title {
     margin-bottom: 50px;
     padding: 14px;
 
-    h2.movie-title {
-      font-size: map-get(map-get($tablet, font-size), subtitle);
-    }
 
     .img-movies {
       width: 140px;
-    }
-
-    /*VOTES*/
-    .container-rating {
-      font-size: map-get(map-get($mobile, font-size), title3);
     }
 
     .container-main {
@@ -167,12 +164,9 @@ h2.movie-title {
         }
       }
 
-      /*SEE MORE BTN*/
+ 
       .container-see-more {
-        a {
-          text-decoration: none;
-          font-size: map-get(map-get($mobile, font-size), title2);
-        }
+       
         .link-see-more {
           min-height: 25px;
           text-align: center;
@@ -183,18 +177,17 @@ h2.movie-title {
   }
 }
 
-/*TABLET*/
 @media screen and (min-width: 768px) and (max-width: 899px) {
   .card {
     width: 700px;
-    height: 500px;
+    height: 520px;
 
     .img-movies {
       width: 180px;
     }
 
     h2.movie-title {
-      font-size: map-get(map-get($tablet, font-size), subtitle);
+      font-size: map-get(map-get($tablet, font-size), title3);
     }
 
     .container-see-more {
@@ -206,11 +199,11 @@ h2.movie-title {
   }
 }
 
-/*DESKTOP*/
+
 @media screen and (min-width: 900px) {
   .card {
     width: 700px;
-    height: 540px;
+    height: 520px;
 
     .img-movies {
       width: 190px;
@@ -232,10 +225,26 @@ h2.movie-title {
 @media screen and (min-width: 1023px) {
   .card {
     width: 700px;
-    height: 480px;
+    height: 490px;
 
     .img-movies {
       width: 170px;
     }
+
+
+    h2.movie-title {
+      font-size: map-get(map-get($tablet, font-size), title3);
+    }
+
+.container-rating{
+
+.rating{
+      font-size: map-get(map-get($tablet, font-size), body);
   }
+
+}
+
+}
+
+  
 }

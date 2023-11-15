@@ -5,13 +5,13 @@
   justify-content: center;
   align-items: center;
 
-
- background-color:  map-get($colors, color-card);
+  background-color: map-get($colors, color-card);
   box-shadow: 1px 1px 14px rgb(0, 0, 0);
- border-radius: 8px;
- border: .5px solid rgba(80, 80, 80, 0.254);
+  border-radius: 8px;
+  border: 0.5px solid rgba(80, 80, 80, 0.254);
   padding: 0.5em;
   margin-bottom: 38px;
+  width: 180px;
 
   .container-main-favorites {
     display: flex;
@@ -20,7 +20,7 @@
     padding: 5px 10px;
 
     .img-movies {
-      width: 80%;
+      width: 90%;
     }
 
     img.img-movies {
@@ -30,7 +30,7 @@
     }
 
     h2.movie-title {
-      font-size: map-get(map-get($mobile, font-size), title2);
+      font-size: map-get(map-get($mobile, font-size), title3);
       font-family: "Righteous", sans-serif;
       text-transform: uppercase;
       text-align: center;
@@ -48,6 +48,7 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+      padding-top: 10px;
 
       button#remove-favorite-btn {
         display: flex;
@@ -55,10 +56,10 @@
         align-items: center;
         background-color: transparent;
         width: 40%;
-        padding: 2.5em 0 2em 0;
+        padding: 3em 0 2em 0;
         border: none;
         gap: 5px;
-
+        cursor: pointer;
         img {
           width: 2em;
         }
@@ -94,7 +95,6 @@
   }
 }
 
-/*TABLET*/
 @media screen and (min-width: 768px) and (max-width: 899px) {
   .wrapper-favorite-movies {
     .card-favorites {
@@ -139,18 +139,13 @@
   }
 }
 
-
 @media screen and (min-width: 1023px) {
-
-
   .card-favorites {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    
-
     padding: 0.5em;
     margin-bottom: 38px;
+    width: 210px;
   }
 }

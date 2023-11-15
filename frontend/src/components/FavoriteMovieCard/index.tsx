@@ -76,7 +76,7 @@ export default FavoriteMovieCard;
 import React, { useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { MovieCardProps, Movie, MovieType } from "../../types/interfaces";
+import { MovieCardProps } from "../../types/interfaces";
 import "./favmoviecard.scss";
 
 const FavoriteMovieCard: React.FC<MovieCardProps> = ({
@@ -93,7 +93,7 @@ const FavoriteMovieCard: React.FC<MovieCardProps> = ({
 
 
 
-  const [isFavorite, setIsFavorite] = useState(true); // Use um estado para rastrear se o filme é favorito
+  const [isFavorite, setIsFavorite] = useState(true); 
 
  
   const location = useLocation();
@@ -111,7 +111,7 @@ const FavoriteMovieCard: React.FC<MovieCardProps> = ({
         });
 
         console.log(response.data);
-        // Se a remoção do servidor for bem-sucedida, atualize o estado local
+    
         setIsFavorite(false);
 
         if (updateFavorites) {

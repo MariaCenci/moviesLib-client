@@ -96,15 +96,15 @@
 
 .container form .footer p {
   font-weight: 400;
-  font-size: 16px;
+  font-size: map-get(map-get($mobile, font-size),title3);
   line-height: 19px;
   color: map-get($colors, color-secondary);
 }
 
 .container form .footer a {
   font-weight: 400;
-  font-size: 16px;
   line-height: 19px;
+  font-size: map-get(map-get($mobile, font-size),title3);
   text-decoration-line: underline;
   color: #565da6;
 }
@@ -116,6 +116,12 @@
         width: 450px;
       }
     }
+
+    form .footer{
+      font-size: map-get(map-get($tablet, font-size),title2);
+
+    }
+
     button.button {
       width: 450px;
     }
@@ -129,6 +135,13 @@
         width: 520px;
       }
     }
+
+
+    form .footer{
+      font-size: map-get(map-get($tablet, font-size),title2);
+
+    }
+
     button.button {
       width: 520px;
     }

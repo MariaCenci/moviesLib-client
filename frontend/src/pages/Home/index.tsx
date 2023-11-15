@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Carousel from "../../components/Carousel"
+import Carousel from "../../components/Carousel";
 import MovieCard from "../../components/MovieCard";
+import { useNavigate } from "react-router-dom";
 
 import "../../main.scss";
 import "./home.scss";
@@ -13,27 +14,22 @@ type Movie = {
   id: number;
 };
 
-
-
 const Home = () => {
   const [topMovies, setTopMovies] = useState<Movie[]>([]);
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
-  //const [loading, setLoading] = useState(true);
+  const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([]);
 
   const location = useLocation();
-  
-
 
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-  
-    const storedUserId = localStorage.getItem('userId');
- 
+    const storedUserId = localStorage.getItem("userId");
+
     if (storedUserId) {
       setUserId(storedUserId);
     }
-  }, []); 
+  }, []);
 
   const getTopMovies = async (url: string) => {
     try {
@@ -71,37 +67,66 @@ const Home = () => {
     getPopularMovies(popularUrl);
   }, []);
 
+
+
+  const getUpcomingMovies = async (url: string) => {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      setUpcomingMovies(data.results);
+
+      console.log(data.results);
+    } catch (error: any) {
+      console.error(`erro catch:  ${error.message}`);
+    }
+  };
+
+  useEffect(() => {
+    const popularUrl = `${moviesURL}upcoming?${apiKey}`;
+
+    getUpcomingMovies(popularUrl);
+  }, []);
+
+
+
+
   return (
     <>
-      <div className="wrapper"> 
-      
+      <div className="wrapper">
+        <div className="container-movies">
+          <div className="container-top-movies">
+            <h2 className="top-movies">Top rated</h2>
+            {topMovies.length === 0 && <p>Loading...</p>}
+            {topMovies.length > 0 && (
+              <div className="movie-card-container">
+                <Carousel movies={topMovies} userId={userId!} />
+              </div>
+            )}
+          </div>
 
-       
-<div className="container-movies">
-       <div className="container-top-movies">
-         <h2 className="top-movies">Top movies</h2>
-          {topMovies.length === 0 && <p>Loading...</p>}
-          {topMovies.length > 0 && (
-            <div className="movie-card-container">
-
-                <Carousel movies={topMovies} userId = {userId!} /> 
-          
-            </div>
-          )}
-        </div>
-
-
-        <div className="container-popular-movies">
-        <h2 className="popular-movies">Popular movies</h2>
-          {popularMovies.length === 0 && <p>Loading...</p>}
-          {popularMovies.length > 0 && (
-            <div className="movie-card-container">
-           
+          <div className="container-popular-movies">
+            <h2 className="popular-movies">Popular</h2>
+            {popularMovies.length === 0 && <p>Loading...</p>}
+            {popularMovies.length > 0 && (
+              <div className="movie-card-container">
                 <Carousel movies={popularMovies} userId={userId!} />
-              
-            </div>
-          )}
-        </div>
+              </div>
+            )}
+          </div>
+
+
+
+          <div className="container-upcoming-movies">
+            <h2 className="upcoming-movies">Upcoming</h2>
+            {upcomingMovies.length === 0 && <p>Loading...</p>}
+            {upcomingMovies.length > 0 && (
+              <div className="movie-card-container">
+                <Carousel movies={upcomingMovies} userId={userId!} />
+              </div>
+            )}
+          </div>
+
+
         </div>
       </div>
     </>

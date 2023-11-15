@@ -1,8 +1,7 @@
 @import "../../Styles/variables";
-@import "../../Styles/mixins.scss";
 
 
-.container-hamburguer{
+.container-hamburguer {
   width: 10%;
   padding: 14px;
 }
@@ -10,11 +9,11 @@
 .hamburguer-icon {
   position: absolute;
   width: 18px;
-  height: 1.4px;
+  height: 2.5px;
   background-color: map-get($colors, color-secondary);
   transition: 0.5s;
   border-radius: 15px;
-right: 8%;
+  right: 8%;
   top: 46%;
   cursor: pointer;
 }
@@ -24,7 +23,7 @@ right: 8%;
   content: "";
   position: absolute;
   width: 18px;
-  height: 1.4px;
+  height: 2.5px;
   border-radius: 15px;
   background-color: map-get($colors, color-secondary);
 }
@@ -34,33 +33,38 @@ right: 8%;
   content: "";
   position: absolute;
   width: 18px;
-  height: 1.4px;
+  height: 2.5px;
   border-radius: 15px;
   background-color: map-get($colors, color-secondary);
 }
 
 ul.list-pages li {
   list-style-type: none;
-  
+    
+
 }
 
 ul.list-pages li a {
- font-size: map-get(map-get($mobile, font-size), title2);
+  font-size: map-get(map-get($mobile, font-size), title2);
   text-decoration: none;
   color: white;
   background-color: transparent;
   cursor: pointer;
-
+  
+  
 }
 
-ul.list-pages li a:hover{
+ul.list-pages li a:hover {
   color: map-get($colors, color-hover);
-  transition: .3s;
-}
+  transition: 0.3s;
+ 
 
+}
 
 .menu-list {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 
   width: 100%;
@@ -74,6 +78,7 @@ ul.list-pages li a:hover{
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
 }
 
 .menu-list .list-pages li {
@@ -81,15 +86,18 @@ ul.list-pages li a:hover{
   color: black;
   margin-bottom: 50px;
   font-size: 1.2em;
+
+a{
   font-family: map-get($global-fonts, font-body);
+}
 
-
-
+  
 }
 
 .toggleActive .hamburguer-icon {
   background-color: transparent;
   box-shadow: 0 2px 5px transparent;
+  right: 5%;
 }
 
 .toggleActive .hamburguer-icon::after {
@@ -110,13 +118,12 @@ ul.list-pages li a:hover{
   z-index: 10;
 }
 
-
-.menuClose{
+.menuClose {
   z-index: 0;
 }
 
 .menuOpen {
-  background: map-get($colors, background-login);
+  background: map-get($colors, background-body);
   position: absolute;
   position: fixed;
 
@@ -128,16 +135,23 @@ ul.list-pages li a:hover{
   z-index: 2;
 }
 
+a#logout-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  span {
+    margin: 0;
 
-
-@media screen and (min-width: 900px)  {
-
-
-  .hamburguer-icon {
- 
-  right: 10%;
-   
+    img {
+      width: 1.5em;
+    }
   }
-  
+}
 
+@media screen and (min-width: 900px) {
+  .hamburguer-icon {
+    right: 10%;
+  }
 }

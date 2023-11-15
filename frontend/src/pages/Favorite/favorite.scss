@@ -3,11 +3,10 @@
 .wrapper-favorite-movies {
   display: flex;
   flex-direction: column;
-justify-content: center;
+  justify-content: center;
   align-items: center;
   margin-top: 100px;
-   
-   
+
   h1 {
     font-size: map-get(map-get($mobile, font-size), title1);
     margin-bottom: 50px;
@@ -16,18 +15,16 @@ justify-content: center;
 
   .container-favorite-movies {
     padding: 0 2.4em;
- justify-content: center;
- align-items: center;
- 
- display: grid;
-grid-template-columns: repeat(1, 1fr);
-grid-gap: 16px;
- gap: 30px;
- width: 60%;
+    justify-content: center;
+    align-items: center;
 
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 16px;
+    gap: 30px;
+    width: 60%;
   }
 }
-
 
 @media screen and (min-width: 450px) and (max-width: 767px) {
   .wrapper-favorite-movies {
@@ -37,20 +34,17 @@ grid-gap: 16px;
 
     .container-favorite-movies {
       padding: 0 2.4em;
-     
+
       justify-content: center;
       align-items: center;
-      
+
       display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 16px;
       gap: 30px;
       width: 60%;
     }
   }
-
-
-
 }
 
 @media screen and (min-width: 768px) and (max-width: 899px) {
@@ -61,24 +55,18 @@ grid-gap: 16px;
 
     .container-favorite-movies {
       padding: 0 2.4em;
-     
+
       justify-content: center;
       align-items: center;
-      
+
       display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 16px;
       gap: 30px;
       width: 80%;
     }
   }
-
-
-
-
-
 }
-
 
 @media screen and (min-width: 900px) and (max-width: 1022px) {
   .wrapper-favorite-movies {
@@ -88,13 +76,13 @@ grid-gap: 16px;
 
     .container-favorite-movies {
       padding: 0 2.4em;
-     
+
       justify-content: center;
       align-items: center;
-      
+
       display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 16px;
       gap: 30px;
       width: 80%;
     }
@@ -102,29 +90,26 @@ grid-gap: 16px;
 }
 @media screen and (min-width: 1023px) {
   .wrapper-favorite-movies {
+    display: flex;
 
-      display: flex;
-      
-      padding: 0 40px;
-      justify-content: center;
-      align-items: center;
-      margin-top: 100px;
-    
-
+    padding: 0 40px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
 
     h1 {
       font-size: map-get(map-get($tablet, font-size), title1);
     }
 
     .container-favorite-movies {
-      padding: 0 .5em;
-     
+      padding: 0 0.5em;
+
       justify-content: center;
       align-items: center;
-      
+
       display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 16px;
       gap: 30px;
       width: 80%;
     }

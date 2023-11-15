@@ -7,40 +7,37 @@ import { useNavigate } from "react-router-dom";
 import "./register.scss";
 
 const Register: React.FC = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
-      const api = axios.create({
-        baseURL: "http://localhost:4000",
+  const api = axios.create({
+    baseURL: "http://localhost:4000",
+  });
+
+  const handleRegister = async () => {
+    try {
+      const response = await api.post("/register", {
+        email,
+        password,
       });
 
-
-
-    const handleRegister = async () => {
-   
-      try {
-        const response = await api.post('/register', {
-          email,
-          password,
-        });
-  
-        if (response.status === 201) {
-          setMessage("User registered successfully");
-          navigate('/userLogin')
-        }
-      } catch (error) {
-        console.log('error during registration')
-        if (error.response) {
-          setMessage(error.response.data.error);
-          setError(error.response.data.error);
-        } else {
-          setMessage("An error occurred during registration.");
-        }
+      if (response.status === 201) {
+        setMessage("User registered successfully");
+        navigate("/userLogin");
       }
-    };
+    } catch (error) {
+      console.log("error during registration");
+      if (error.response) {
+        setMessage(error.response.data.error);
+        setError(error.response.data.error);
+      } else {
+        setMessage("An error occurred during registration.");
+      }
+    }
+  };
 
   return (
     <div className="container">
@@ -48,7 +45,12 @@ const navigate = useNavigate()
         <h3> Create your account</h3>
       </header>
 
-      <form onSubmit={(e) => {e.preventDefault(); handleRegister()}} >
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleRegister();
+        }}
+      >
         <div className="inputContainer">
           <label htmlFor="email">Mail</label>
           <input
@@ -69,7 +71,6 @@ const navigate = useNavigate()
             id="password"
             placeholder="********************"
             onChange={(e) => setPassword(e.target.value)}
-            
           />
         </div>
 
@@ -80,7 +81,7 @@ const navigate = useNavigate()
           <p>Already have an account?</p>
           <Link to="/userLogin">Login</Link>
         </div>
-        <p style={{ color: 'red' }}>{error}</p>
+        <p style={{ color: "red" }}>{error}</p>
       </form>
     </div>
   );

@@ -10,7 +10,7 @@ export interface MovieType{
     poster_path?: string,
   vote_average?: string,
   original_title?: string,
-  userId: string | null
+  userId: string | null 
     budget?: number 
   movie: string[]
   
@@ -32,7 +32,7 @@ export interface MovieType{
 export type Movie = {
     id: number,
     favorite?: boolean,
-userId?: string | null,
+userId?: string | null ,
 
   }
 
@@ -57,3 +57,9 @@ userId: string
    
     userId?: string
   }
+
+
+export type SearchProps = {
+  userId?: string;
+
+}

@@ -1,66 +1,52 @@
-
-
 .carousel-container {
-    width: 100%;
+  width: 100%;
 
-    overflow: auto;
-padding: 0 38px;
-    position: relative;
-  }
-  
-  .card-carousel {
-    display: flex;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    white-space: nowrap;
+  overflow: auto;
+  padding: 0 38px;
+  position: relative;
+
+
+.card-carousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  white-space: nowrap;
   gap: 20px;
 
-padding: 6px;   
-
-  }
-  
-  
-  .scroll-button {
-
-   position: absolute;
-         transform: translateY(-70%);
- top: 50%;
-
-   z-index: 100;
-    background-color: transparent;
-
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-
-    img{
-        width: 1.5em;
-       
-    }
-
-
-  }
-
-
-
-  .scroll-button.left {
-    position:absolute;
-    
-    left: 0;
-
-    
-img{
-transform: rotate(-90deg);
-
- 
+  padding: 6px;
 }
+
+.scroll-button {
+  position: absolute;
+  transform: translateY(-70%);
+  top: 50%;
+
+  z-index: 100;
+  background-color: transparent;
+
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+
+  img {
+    width: 1.5em;
   }
-  
-  .scroll-button.right {
-    right: 0;
-    img{
-        transform: rotate(90deg);
-         
-        }
+}
+
+.scroll-button.left {
+  position: absolute;
+
+  left: 0;
+
+  img {
+    transform: rotate(-90deg);
   }
-  
+}
+
+.scroll-button.right {
+  right: 0;
+  img {
+    transform: rotate(90deg);
+  }
+}
+}
