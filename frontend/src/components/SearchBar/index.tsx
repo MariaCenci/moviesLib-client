@@ -38,7 +38,7 @@ const SearchBar = () => {
       </form>
       <button className="search-button">
         <AiOutlineSearch
-          color={"white"}
+          color={"black"}
           className="search-icon"
           onClick={handleIconClick}
         />

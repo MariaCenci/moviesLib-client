@@ -10,7 +10,7 @@
   position: absolute;
   width: 18px;
   height: 2.5px;
-  background-color: map-get($colors, color-secondary);
+  background-color: map-get($colors, color-primary);
   transition: 0.5s;
   border-radius: 15px;
   right: 8%;
@@ -25,7 +25,7 @@
   width: 18px;
   height: 2.5px;
   border-radius: 15px;
-  background-color: map-get($colors, color-secondary);
+  background-color: map-get($colors, color-primary);
 }
 
 .hamburguer-icon::after {
@@ -35,7 +35,7 @@
   width: 18px;
   height: 2.5px;
   border-radius: 15px;
-  background-color: map-get($colors, color-secondary);
+  background-color: map-get($colors, color-primary);
 }
 
 ul.list-pages li {

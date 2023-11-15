@@ -6,7 +6,7 @@
 
   width:250px;
 
-  min-height: 40vh;
+ min-height: 22em;
   margin-bottom: 50px;
   padding: 10px;
   margin: 5px;
@@ -24,20 +24,26 @@ img.img-movies {
   border-radius: 8px;
 }
 
+.container-title{
+
+
 h2.movie-title {
   font-size: map-get(map-get($mobile, font-size), title4);
   font-family: map-get($global-fonts, font-title-movie), sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: map-get($colors, color-secondary);
-  text-wrap: wrap;
+  
+  white-space: normal;
   text-shadow: 1px 1px 10px black;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  padding: 2px;
+  margin-top: 10px 10px 15px 10px;
+ 
+  padding: 10px;
   background-color: rgba(255, 255, 255, 0);
-  height: 3.5em;
+  height: 5.4em;
 }
+}
+
 
 /*VOTES*/
 .container-rating {
@@ -146,7 +152,7 @@ h2.movie-title {
     flex-direction: column;
 
     width: 70em;
-    height: 26em;
+    height: 25em;
     margin-bottom: 50px;
     padding: 14px;
 

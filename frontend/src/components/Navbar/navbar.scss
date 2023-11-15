@@ -5,13 +5,13 @@
 justify-content: space-between;
   align-items: center;
 
-  background-color: map-get($colors, color-primary);
+  background-color: rgba(255, 255, 255, 0.876);
   height: 70px;
   margin-bottom: 20px;
   position: sticky;
   padding: 0 1.2em;
   width: 100%;
-  box-shadow: 0px 0px 18px rgb(0, 0, 0);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.829);
 
 
 
@@ -31,7 +31,7 @@ justify-content: space-between;
 
 .container-logo a{
   text-decoration: none;
-  background-color: black;
+  
 }
 
 span.logo {
@@ -40,8 +40,8 @@ span.logo {
   text-decoration: none;
  
 
-  color: white;
-  background-color: black;
+  color: map-get($colors, color-primary);
+
 
 }
 }
@@ -81,7 +81,7 @@ span.logo {
 
   #navbar {
 
-    padding: 0 4em;
+    padding: 0 7em;
 
 
     span.logo {

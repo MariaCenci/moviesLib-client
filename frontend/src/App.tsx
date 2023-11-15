@@ -2,6 +2,7 @@ import React from "react";
 import {  Routes, Route, BrowserRouter } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 import AuthenticatedRoutes from "./AuthenticatedRoutes";
 
 const App: React.FC = () => {
@@ -9,7 +10,7 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/userLogin" element={<Login />} />
+          /*<Route path="/userLogin" element={<Login />} />
           <Route path="/userRegister" element={<Register />} />
           <Route path="/*" element={<AuthenticatedRoutes />} />
           <Route index element={<Login />} />

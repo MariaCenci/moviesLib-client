@@ -184,7 +184,10 @@ const MovieCard: React.FC<MovieCardProps> = ({
 
         <div className="container-main">
           <img className="img-movies" src={imgURL} alt="title" />
-          <h2 className="movie-title">{movie.original_title}</h2>
+          <div className="container-title">
+             <h2 className="movie-title">{movie.original_title}</h2>
+          </div>
+         
 
           <div className="container-favorite-btn">
             <button id="favorite-btn" onClick={toggleFavorite}>

@@ -1,24 +1,36 @@
 @import "../../Styles/variables.scss";
 
 .search {
-  border: 1px solid rgba(220, 220, 220, 0.381);
+  border: 1px solid rgba(0, 0, 0, 0.129);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.174);
   border-radius: 10px;
   width: 7.5em;
   height: 1.2em;
   margin: 0 0.1em;
   padding: 6px;
-
+background-color: rgba(156, 156, 156, 0.098);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 input#search {
-  font-size: map-get(map-get($mobile, font-size), title4);
-
-  background-color: map-get($colors, color-primary);
+  font-size: map-get(map-get($mobile, font-size), title3);
+color: map-get($colors, color-primary);
+  background-color:  transparent;
   width: 60px;
+
 }
+
+
+.search{
+  input#search::placeholder{
+  color: rgba(0, 0, 0, 0.941);
+
+}
+}
+
+
 
 .search input {
   border: none;
@@ -30,18 +42,21 @@ input#search {
 .search-icon {
   font-size: 1.1em;
   margin-right: 5px;
-
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .search-button {
-  background-color: map-get($colors, color-primary);
-
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+background-color: transparent;
 }
 
 @media screen and (min-width: 450px) and (max-width: 767px) {
@@ -51,9 +66,8 @@ input#search {
 
     input#search {
       font-size: map-get(map-get($mobile, font-size), title4);
-
+    }
   }
-}
 }
 
 /*TABLET*/
