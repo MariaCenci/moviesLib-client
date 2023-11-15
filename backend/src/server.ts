@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { compareSync, hashSync } from "bcrypt";
 import express from "express";
-import { Router } from "express";
 import cors from "cors";
 
 const prisma = new PrismaClient();
@@ -145,42 +144,6 @@ server.post("/api/addFavorite", async (req, res) => {
   }
 });
 
-
-
-
-server.post("/api/markAsFavorite", async (req, res) => {
-  const { userId, id: movieId, original_title, voteAverage, poster_path } = req.body;
-
-  try {
-    const existingFavorite = await prisma.favoriteMovie.findFirst({
-      where: {
-        userId: userId,
-        original_title: original_title,
-      },
-    });
-
-    if (existingFavorite) {
-      console.log("already favorite");
-    } else {
-      const newFavorite = await prisma.favoriteMovie.create({
-        data: {
-          movieId: movieId,
-          original_title: original_title,
-          vote_average: voteAverage,
-          poster_path: poster_path,
-          user: {
-            connect: {
-              userId: userId,
-            },
-          },
-        },
-      });
-      res.send(newFavorite);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-});
 
 server.delete("/api/removeFavorite", async (req, res) => {
   const { user_id, id } = req.body;
