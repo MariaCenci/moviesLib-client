@@ -43,10 +43,18 @@ export const Search: React.FC <SearchProps> = () => {
         Results for: <span className="query"> {query}</span>
       </h2>
       <div className="container-movies">
-        {movies.length === 0 && <p>Carregando...</p>}
-        {movies.length > 0 &&
+
+        {
+        movies.length === 0 ? (
+          <p id="error-search">Movie not found </p>
+        ): (
+          (
         //@ts-ignore
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} userId={userId} />)}
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie} userId={userId} />)
+          ))
+        }
+       
+      
       </div>
     </div>
   );

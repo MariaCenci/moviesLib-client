@@ -15,7 +15,8 @@
   }
 
   h2.top-movies,
-  h2.popular-movies, h2.upcoming-movies {
+  h2.popular-movies,
+  h2.upcoming-movies {
     color: map-get($colors, color-secondary);
     font-size: map-get(map-get($mobile, font-size), title1);
     text-shadow: 1px 1px 15px black;
@@ -33,12 +34,28 @@
 
     overflow-y: hidden;
   }
+
+  .container-select {
+    .select-gender {
+      padding: 20px 0 0 54px;
+
+      select {
+        border-radius: 6px;
+        font-size: 0.7em;
+        border: none;
+        width: 10em;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.594);
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 450px) and (max-width: 767px) {
   .container-movies {
     h2.top-movies,
-    h2.popular-movies, h2.upcoming-movies {
+    h2.popular-movies,
+    h2.upcoming-movies {
       padding-left: 1.6em;
       font-size: map-get(map-get($tablet, font-size), title1);
     }
@@ -59,7 +76,8 @@
 @media screen and (min-width: 768px) and (max-width: 899px) {
   .container-movies {
     h2.top-movies,
-    h2.popular-movies, h2.upcoming-movies {
+    h2.popular-movies,
+    h2.upcoming-movies {
       padding-left: 1.6em;
       font-size: map-get(map-get($tablet, font-size), title1);
     }
@@ -76,7 +94,8 @@
 @media screen and (min-width: 900px) and (max-width: 1022px) {
   .container-movies {
     h2.top-movies,
-    h2.popular-movies, h2.upcoming-movies {
+    h2.popular-movies,
+    h2.upcoming-movies {
       padding-left: 2em;
       font-size: map-get(map-get($tablet, font-size), title1);
     }
@@ -96,7 +115,8 @@
 @media screen and (min-width: 1023px) {
   .container-movies {
     h2.top-movies,
-    h2.popular-movies, h2.upcoming-movies {
+    h2.popular-movies,
+    h2.upcoming-movies {
       padding-left: 2em;
       font-size: map-get(map-get($tablet, font-size), title1);
     }
