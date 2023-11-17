@@ -146,45 +146,15 @@ server.post("/api/addFavorite", async (req, res) => {
     res.send("Params not valid");
   }
 });
-/*
-// delete favorite
-server.delete("/api/removeFavorite", async (req, res) => {
-  const { user_id, id } = req.body;
 
-  try {
-    const favoriteMovie = await prisma.favoriteMovie.findFirst({
-      where: {
-        userId: user_id,
-        id: id,
-      },
-    });
 
-    if (!favoriteMovie) {
-      return res.status(404).send("favorite movie not found");
-    }
 
-    await prisma.favoriteMovie.delete({
-      where: {
-        id: favoriteMovie.id,
-      },
-    });
 
-    res.status(200).send("favorite movie removed successfully");
-    console.log(id)
-  } catch (error) {
-    res
-      .status(500)
-      .send(console.log(error) + "error at removing movie from favorite");
-  }
-});
-*/
 // delete favorites
-
 server.delete("/api/removeFavorite", async (req, res) => {
   const { userId, movieId } = req.body;
 
   try {
-    // Verifica se o filme está na lista de favoritos antes de remover
     const favoriteMovie = await prisma.favoriteMovie.findFirst({
       where: {
         userId: userId,
@@ -193,21 +163,52 @@ server.delete("/api/removeFavorite", async (req, res) => {
     });
 
     if (!favoriteMovie) {
-      return res.status(404).send("O filme favorito não foi encontrado");
+      return res.status(404).send("Favorite movie not found");
     }
 
-    // Remove o filme da lista de favoritos no Prisma
+   
     await prisma.favoriteMovie.delete({
       where: {
         id: favoriteMovie.id,
       },
     });
 
-    res.status(200).send("Filme favorito removido com sucesso");
+    await fetch('http://localhost:4000/api/updateFavorites', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId }),
+    });
+
+    res.status(200).send("Movie removed from favorites");
   } catch (error) {
     res.status(500).send(console.log(error) + "Erro ao remover filme dos favoritos");
   }
 });
+
+//update favorites
+server.put("/api/updateFavorites", async (req, res) => {
+  const { userId } = req.body;
+
+
+  try {
+    
+    const updatedFavorites = await prisma.favoriteMovie.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+
+  res.status(200).send(updatedFavorites + "updated favorites");
+  } catch (error) {
+    console.error("cannot update list:", error);
+    res.status(500).send("Cannot update list");
+  }
+
+});
+
+
 
 
 // get from watch list
@@ -278,35 +279,63 @@ server.post("/api/addToWatchList", async (req, res) => {
 });
 
 // remove from watch list
-
 server.delete("/api/removeFromWatchList", async (req, res) => {
   const { userId, movieId } = req.body;
 
   try {
-    
-    const watchList = await prisma.watchList.findFirst({
+    const movieFromWatchList = await prisma.watchList.findFirst({
       where: {
         userId: userId,
         id: movieId,
       },
     });
 
-    if (!watchList) {
-      return res.status(404).send("Movie not found in watchlist");
+    if (!movieFromWatchList) {
+      return res.status(404).send("Favorite movie not found");
     }
 
-
+    // Remova o filme da lista de favoritos no Prisma
     await prisma.watchList.delete({
       where: {
-        id: watchList.id,
+        id: movieFromWatchList.id,
       },
     });
 
-    res.status(200).send("Movie removed from watchlist");
+    await fetch('http://localhost:4000/api/updateWatchList', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId }),
+    });
+
+    res.status(200).send("Movie removed from watch list");
   } catch (error) {
-    res.status(500).send(console.log(error) + "Cannot remove from watchlist");
+    res.status(500).send(console.log(error) + "cannot remove movie from watch list");
   }
 });
+
+server.put("/api/updateWatchList", async (req, res) => {
+  const { userId } = req.body;
+
+
+  try {
+    
+    const updatedFavorites = await prisma.favoriteMovie.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+
+  res.status(200).send(updatedFavorites + "updated favorites");
+  } catch (error) {
+    console.error("cannot update list:", error);
+    res.status(500).send("Ecannot update list");
+  }
+
+});
+
+
 
 server.listen(PORT, () => {
   console.log(`server initialized at http://localhost:${PORT}`);

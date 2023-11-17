@@ -17,6 +17,7 @@ model User {
 
   favoriteMovie FavoriteMovie[]
   watchList WatchList[]
+ 
 }
 
 model FavoriteMovie {
@@ -27,6 +28,7 @@ model FavoriteMovie {
   vote_average   Float?
   poster_path    String?
   userId String
+
 
    @@unique([userId, movieId])
 }
@@ -42,3 +44,4 @@ model WatchList {
   userId String
    @@unique([userId, movieId])
 }
+
