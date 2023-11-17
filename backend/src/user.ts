@@ -4,7 +4,7 @@ export const userPrismaModel = Prisma.validator<Prisma.UserArgs>()({
   select: {
     userId: true,
     email: true,
-    // Outros campos que deseja armazenar
+
   },
 });
 

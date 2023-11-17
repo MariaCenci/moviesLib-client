@@ -16,6 +16,8 @@ server.get("/", (req, res) => {
   res.send("test");
 });
 
+//register
+
 server.post("/register", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -45,7 +47,7 @@ server.post("/register", async (req, res) => {
   }
 });
 
-// Rota de login
+// login
 server.post("/login", async (req, res) => {
   try {
     const { email, password, userId } = req.body;
@@ -67,7 +69,7 @@ server.post("/login", async (req, res) => {
       return res.status(401).send({ error: "Invalid authentication" });
     }
     console.log(userId);
-    // Autenticação bem-sucedida
+   
     return res
       .status(200)
       .send({ message: "Logged in successfully", userId: user.userId });
@@ -97,11 +99,12 @@ server.get("/api/favoriteMovies/:userId", async (req, res) => {
 });
 
 
-
+// add favorite 
 server.post("/api/addFavorite", async (req, res) => {
   const { userId, movieId, original_title, poster_path } = req.body;
 
   if (typeof userId !== undefined && movieId !== undefined) {
+
     if (!movieId || !original_title || !poster_path) {
       return res.status(400).send({ error: "Invalid request" });
     }
@@ -143,8 +146,8 @@ server.post("/api/addFavorite", async (req, res) => {
     res.send("Params not valid");
   }
 });
-
-
+/*
+// delete favorite
 server.delete("/api/removeFavorite", async (req, res) => {
   const { user_id, id } = req.body;
 
@@ -174,9 +177,40 @@ server.delete("/api/removeFavorite", async (req, res) => {
       .send(console.log(error) + "error at removing movie from favorite");
   }
 });
+*/
+// delete favorites
+
+server.delete("/api/removeFavorite", async (req, res) => {
+  const { userId, movieId } = req.body;
+
+  try {
+    // Verifica se o filme está na lista de favoritos antes de remover
+    const favoriteMovie = await prisma.favoriteMovie.findFirst({
+      where: {
+        userId: userId,
+        id: movieId,
+      },
+    });
+
+    if (!favoriteMovie) {
+      return res.status(404).send("O filme favorito não foi encontrado");
+    }
+
+    // Remove o filme da lista de favoritos no Prisma
+    await prisma.favoriteMovie.delete({
+      where: {
+        id: favoriteMovie.id,
+      },
+    });
+
+    res.status(200).send("Filme favorito removido com sucesso");
+  } catch (error) {
+    res.status(500).send(console.log(error) + "Erro ao remover filme dos favoritos");
+  }
+});
+
 
 // get from watch list
-
 server.get("/api/watchList/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
@@ -246,32 +280,31 @@ server.post("/api/addToWatchList", async (req, res) => {
 // remove from watch list
 
 server.delete("/api/removeFromWatchList", async (req, res) => {
-  const { user_id, id } = req.body;
+  const { userId, movieId } = req.body;
 
   try {
-    const watchListMovie = await prisma.watchList.findFirst({
+    
+    const watchList = await prisma.watchList.findFirst({
       where: {
-        userId: user_id,
-        id: id,
+        userId: userId,
+        id: movieId,
       },
     });
 
-    if (!watchListMovie) {
-      return res.status(404).send("movie from watch list not found");
+    if (!watchList) {
+      return res.status(404).send("Movie not found in watchlist");
     }
+
 
     await prisma.watchList.delete({
       where: {
-        id: watchListMovie.id,
+        id: watchList.id,
       },
     });
 
-    res.status(200).send("movie from watch list removed successfully");
-    console.log(id)
+    res.status(200).send("Movie removed from watchlist");
   } catch (error) {
-    res
-      .status(500)
-      .send(console.log(error) + "error at removing movie from watch list");
+    res.status(500).send(console.log(error) + "Cannot remove from watchlist");
   }
 });
 
