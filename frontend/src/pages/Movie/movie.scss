@@ -31,7 +31,7 @@
 
     h2 {
       text-align: center;
-      padding-top: 1.4em;
+      padding: 1.4em 2.2em 0 2.2em;
       font-size: map-get(map-get($mobile, font-size), title5);
     }
 
@@ -159,7 +159,7 @@
 
       h2 {
         text-align: start;
-        padding-top: 0;
+        padding: 0;
         font-size: map-get(map-get($desktop, font-size), title1);
       }
 
@@ -191,7 +191,7 @@
 
             padding: 4px 6px;
 
-            width: 4em;
+            max-width: 9em;
           }
         }
 

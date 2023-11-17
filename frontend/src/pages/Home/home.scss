@@ -37,7 +37,7 @@
 
   .container-select {
     .select-gender {
-      padding: 20px 0 0 54px;
+      padding: 20px 0 0 58px;
 
       select {
         border-radius: 6px;
@@ -56,9 +56,10 @@
     h2.top-movies,
     h2.popular-movies,
     h2.upcoming-movies {
-      padding-left: 1.6em;
+      padding-left: 58px;
       font-size: map-get(map-get($tablet, font-size), title1);
-    }
+  
+     
 
     .movie-card-container {
       overflow-x: auto;
@@ -68,8 +69,10 @@
       padding: 20px 0;
       gap: 30px;
       overflow-y: hidden;
-    }
+      }
+     
   }
+}
 }
 
 /*TABLET*/

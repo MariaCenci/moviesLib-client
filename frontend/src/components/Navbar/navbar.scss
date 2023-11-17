@@ -5,7 +5,7 @@
 justify-content: space-between;
   align-items: center;
 
-  background-color: rgba(255, 255, 255, 0.737);
+  background-color: rgba(255, 255, 255, 0.778);
   height: 70px;
   margin-bottom: 20px;
   position: sticky;
@@ -40,7 +40,7 @@ span.logo {
   text-decoration: none;
  
 
-  color: map-get($colors, color-primary);
+  color:map-get($colors, color-items-nav);
 
 
 }

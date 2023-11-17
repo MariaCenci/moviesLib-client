@@ -13,10 +13,11 @@ $colors: (
   color-rating: rgb(52, 7, 157),
   color-card: rgba(0, 0, 0, 0.457),
   color-hover: rgba(221, 238, 255, 0.915),
+  color-items-nav: rgba(0, 0, 0, 0.821),
   background-login:
     linear-gradient(180deg, rgb(54, 54, 56) 0%, rgb(6, 18, 58) 80%),
   background-body:
-    linear-gradient(90deg, rgb(63, 63, 83) 0%, rgb(25, 29, 62) 90%),
+    linear-gradient(90deg, rgb(49, 49, 70) 0%, rgb(24, 29, 71) 90%),
     
 );
 
@@ -47,7 +48,7 @@ $tablet: (
 $desktop: (
   font-size: (
     body: 1.1em,
-    title1: 3.5em,
+    title1: 3em,
     title3: 2.1em,
   ),
 );
