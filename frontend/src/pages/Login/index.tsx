@@ -40,9 +40,9 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
-    // Este efeito ocorre ao montar o componente
+    
     if (userId) {
-      // Usuário já logado, redirecione para a página desejada
+     
       navigate("/home", { state: { userId } });
     }
   }, [userId]);

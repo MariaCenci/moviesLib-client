@@ -1,14 +1,14 @@
 @import "../../Styles/variables.scss";
 
 .search {
-  border: .7px solid rgba(7, 1, 42, 0.331);
-  box-shadow: 0 0 3px rgba(44, 39, 110, 0.472);
+  border: .4px solid rgba(0, 0, 0, 0.33);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.296);
   border-radius: 10px;
   width: 7.5em;
   height: 1.2em;
   margin: 0 0.1em;
   padding: 6px;
-background-color: rgba(156, 156, 156, 0.058);
+background-color: rgba(156, 156, 156, 0.051);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,7 +25,7 @@ color: map-get($colors, color-primary);
 
 .search{
   input#search::placeholder{
-  color:  #111111b7;
+  color:  #11111188;
 
 }
 }

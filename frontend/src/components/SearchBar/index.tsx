@@ -8,13 +8,14 @@ const SearchBar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const userId = localStorage.getItem("userId");
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(search);
     if (!search) return;
 
     navigate(`/search?q=${search}&userId=${userId}`);
-    setSearch("");
+    setSearch(""); // clean state after the search
   };
 
   const handleIconClick = () => {
@@ -38,7 +39,7 @@ const SearchBar = () => {
       </form>
       <button className="search-button">
         <AiOutlineSearch
-          color={"#111111b7"}
+          color={"#black"}
           className="search-icon"
           onClick={handleIconClick}
         />

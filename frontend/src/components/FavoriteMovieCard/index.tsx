@@ -99,7 +99,7 @@ const FavoriteMovieCard: React.FC<MovieCardProps> = ({
   const location = useLocation();
   const userId = location.state?.userId;
 
-
+/*
   const toggleFavoriteRemove = async () => {
     if (isFavorite) {
       try {
@@ -124,7 +124,36 @@ const FavoriteMovieCard: React.FC<MovieCardProps> = ({
         console.log({ msg: error });
       }
     }
-  };
+  };*/
+  // Componente FavoriteMovieCard
+
+const toggleFavoriteRemove = async () => {
+  if (isFavorite) {
+    try {
+      const response = await api.delete("/api/removeFavorite", {
+        data: {
+          userId: userId,
+          movieId: movie.id,
+        },
+      });
+
+      console.log(response.data);
+
+      setIsFavorite(false);
+
+      // Atualiza a lista de favoritos no estado local e no localStorage
+      if (updateFavorites) {
+        //@ts-ignore
+        updateFavorites((prevFavorites) =>
+          prevFavorites.filter((favMovie) => favMovie.id !== movie.id)
+        );
+      }
+    } catch (error) {
+      console.log({ msg: error });
+    }
+  }
+};
+
 
   return (
     <div className="card-favorites" key={movie.id}>
