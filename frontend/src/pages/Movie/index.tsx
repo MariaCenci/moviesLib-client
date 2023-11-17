@@ -4,6 +4,7 @@ import axios from "axios";
 import "./movie.scss";
 import { MovieType, Genre } from "../../types/interfaces";
 
+
 const Movie: React.FC = () => {
   const movieURL = "https://api.themoviedb.org/3/movie/";
   const genreURL = "https://api.themoviedb.org/3/genre/movie/list";
@@ -13,6 +14,9 @@ const Movie: React.FC = () => {
   console.log(id);
   const [movie, setMovie] = useState<MovieType | null>(null);
   const [genre, setGenres] = useState<Genre[] | null>(null);
+
+  const userId = localStorage.getItem("userId");
+
 
   const getGenres = async (url: string) => {
     try {
@@ -133,6 +137,7 @@ const Movie: React.FC = () => {
                 <p className="overview">{movie.overview}</p>
               </div>
             </div>
+
           </>
         )}
       </div>

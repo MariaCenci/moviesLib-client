@@ -33,6 +33,8 @@ const Favorite: React.FC<FavoriteProps> = () => {
     fetchFavoriteMovies();
   }, []);
 
+
+  
   return (
     <div className="wrapper-favorite-movies">
       <h1>Favorite movies</h1>
@@ -44,6 +46,8 @@ const Favorite: React.FC<FavoriteProps> = () => {
               key={movie.id}
               //@ts-ignore
               movie={movie}
+                //@ts-ignore
+              userId={userId}
               updateFavorites={updateFavorites}
             />
           ))}

@@ -35,13 +35,20 @@ const WatchListCard: React.FC<MovieCardProps> = ({
   
         setIsInList(false);
   
-        // Atualiza a lista de favoritos no estado local e no localStorage
+      
         if (updateWatchList) {
           //@ts-ignore
           updateWatchList((prevWatchList) =>
             prevWatchList.filter((movieInList) => movieInList.id !== movie.id)
           );
         }
+
+       
+        await api.put("/api/updateWatchList", {
+          userId: userId,
+          updatedFavorites: await fetchUpdatedWatchList(userId),
+        });
+
       } catch (error) {
         console.log({ msg: error });
       }
@@ -49,6 +56,16 @@ const WatchListCard: React.FC<MovieCardProps> = ({
   };
   
 
+  const fetchUpdatedWatchList = async (userId: string) => {
+    try {
+      const response = await api.get(`/api/watchList/${userId}`);
+      console.log('updated watch list')
+      return response.data;
+    } catch (error) {
+      console.log({ msg: error });
+      return [];
+    }
+  };
   return (
     <>
       {isInList && (

@@ -8,6 +8,7 @@ import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { MovieCardProps } from "../../types/interfaces";
 
+
 const MovieCard: React.FC<MovieCardProps> = ({
   movie,
   showBtn = true,
@@ -196,6 +197,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
             <button id="addList-btn" onClick={toggleWatchList}>
               <img src="src/icons/addList.png" alt="" />
             </button>
+          
           </div>
 
           <div className="container-see-more">
