@@ -1,0 +1,5 @@
+builds:
+  - name: build
+    env: node
+    buildCommand: npm install && npm run build
+    buildDirectory: /backend/src/package.json
