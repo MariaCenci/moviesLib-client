@@ -16,11 +16,11 @@ const PORT_SERVER = 4000;
 
   const isProduction = process.env.NODE_ENV === 'production';
 const baseURL = isProduction
-  ? 'https://movieslib.onrender.com'
+  ? 'https://movies-lib-server.vercel.app/'
   : `http://localhost:${process.env.PORT || 4000}`;
 
   server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", 'https://movieslib-frontend.onrender.com');
+    res.header("Access-Control-Allow-Origin", 'https://movies-lib-frontend.vercel.app/');
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header("Access-Control-Allow-Headers", "Content-Type");
     next();
@@ -30,7 +30,7 @@ const baseURL = isProduction
 
 const corsOptions = {
 
-  origin:  'https://movieslib-frontend.onrender.com', // Substitua pelo URL real do seu frontend no Render
+  origin:  'https://movies-lib-frontend.vercel.app/', // Substitua pelo URL real do seu frontend no Render
   optionsSuccessStatus: 200, // alguns navegadores antigos (IE11, vários SmartTVs) interpretam os códigos de status 204 erroneamente
 };
 
