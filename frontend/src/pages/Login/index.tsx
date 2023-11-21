@@ -34,7 +34,7 @@ const Login: React.FC = () => {
       console.log("login ok");
       console.log(userId);
     } catch (error) {
-      console.error("Erro ao fazer login", error);
+      console.error("Error during login", error);
       setError(error.response.data.error);
     }
   };
