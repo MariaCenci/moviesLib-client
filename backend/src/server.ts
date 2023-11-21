@@ -19,7 +19,7 @@ const baseURL = process.env.NODE_ENV === 'production'
 
 const corsOptions = {
 
-  origin: process.env.FRONTEND_URL || 'https://movieslib-frontend.onrender.com', // Substitua pelo URL real do seu frontend no Render
+  origin: FRONTEND_URL, // Substitua pelo URL real do seu frontend no Render
   optionsSuccessStatus: 200, // alguns navegadores antigos (IE11, vários SmartTVs) interpretam os códigos de status 204 erroneamente
 };
 
