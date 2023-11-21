@@ -8,12 +8,12 @@ import axios from "axios";
 import "./login.scss";
 
 const Login: React.FC = () => {
- /*const api = axios.create({
-    baseURL: "https://movieslib.onrender.com",
+ const api = axios.create({
+    baseURL: "http://localhost:4000",
   });
-*/
 
-const baseURL = "https://movieslib.onrender.com"
+
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const baseURL = "https://movieslib.onrender.com"
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${baseURL}/login`, {
+      const response = await api.post("/login", {
         email,
         password,
       });
