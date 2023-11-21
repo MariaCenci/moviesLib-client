@@ -2,4 +2,4 @@ builds:
   - name: build
     env: node
     buildCommand: npm install && npm run build
-    buildDirectory: /root
+    buildDirectory: /backend

@@ -6,7 +6,7 @@ import cors from "cors";
 const prisma = new PrismaClient();
 
 const server = express();
-const PORT = 4000;
+const PORT_SERVER = 4000;
 
 server.use(cors());
 
@@ -337,6 +337,14 @@ server.put("/api/updateWatchList", async (req, res) => {
 
 
 
-server.listen(PORT, () => {
-  console.log(`server initialized at http://localhost:${PORT}`);
+/*
+server.listen(PORT_SERVER, () => {
+  console.log(`server initialized at http://localhost:${PORT_SERVER}`);
 });
+*/
+
+
+server.listen({
+  host: '0.0.0.0',
+  port: process.env.PORT ? Number(process.env.PORT) : PORT_SERVER
+})
