@@ -14,7 +14,7 @@ const Register: React.FC = () => {
   const navigate = useNavigate();
 
   const api = axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: "https://movieslib.onrender.com",
   });
 
   const handleRegister = async () => {

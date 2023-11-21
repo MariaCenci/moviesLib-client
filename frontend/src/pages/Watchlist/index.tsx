@@ -7,7 +7,7 @@ import axios from "axios";
 
 const WatchList: React.FC<WatchListProps> = () => {
   const api = axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: "https://movieslib.onrender.com",
   });
 
   const userId = localStorage.getItem("userId");

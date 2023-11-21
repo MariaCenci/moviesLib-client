@@ -9,7 +9,7 @@ import "./login.scss";
 
 const Login: React.FC = () => {
   const api = axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: "https://movieslib.onrender.com",
   });
 
   const navigate = useNavigate();
