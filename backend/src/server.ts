@@ -28,7 +28,7 @@ server.use(cors(corsOptions));
 
 server.use(express.json());
 
-server.get(`${baseURL}/login`, (req, res) => {
+server.get(`/`, (req, res) => {
   res.send("test");
 });
 
