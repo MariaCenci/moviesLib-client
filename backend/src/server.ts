@@ -28,7 +28,7 @@ server.use(cors(corsOptions));
 
 server.use(express.json());
 
-server.get("/", (req, res) => {
+server.get(`${baseURL}/login`, (req, res) => {
   res.send("test");
 });
 
@@ -62,6 +62,8 @@ server.post(`${baseURL}/register`, async (req, res) => {
     res.status(500).send({ error: "Unable to save user in the database" });
   }
 });
+
+
 
 // login
 server.post(`/login`, async (req, res) => {
