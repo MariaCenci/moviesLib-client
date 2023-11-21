@@ -10,9 +10,14 @@ const PORT_SERVER = 4000;
 
 
 
-const baseURL = process.env.NODE_ENV === 'production'
+/*const baseURL = process.env.NODE_ENV === 'production'
   ? 'https://movieslib.onrender.com'
-  : 'http://localhost:4000'; // ou a URL local do seu backend
+  : 'http://localhost:4000'; // ou a URL local do seu backend*/
+
+  const isProduction = process.env.NODE_ENV === 'production';
+const baseURL = isProduction
+  ? 'https://movieslib.onrender.com'
+  : `http://localhost:${process.env.PORT || 4000}`;
 
   server.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", 'https://movieslib-frontend.onrender.com');
@@ -31,7 +36,7 @@ const corsOptions = {
 
 
 server.use(cors(corsOptions));
-server.use(cors());
+//server.use(cors());
 
 server.use(express.json());
 
@@ -41,7 +46,7 @@ server.get(`/`, (req, res) => {
 
 //register
 
-server.post(`${baseURL}/register`, async (req, res) => {
+server.post(`/register`, async (req, res) => {
   try {
     const { email, password } = req.body;
     const passwordHash = await hashSync(password, 10);
@@ -73,7 +78,7 @@ server.post(`${baseURL}/register`, async (req, res) => {
 
 
 // login
-server.post(`/login`, async (req, res) => {
+server.post(`${baseURL}/login`, async (req, res) => {
   try {
     const { email, password, userId } = req.body;
 
