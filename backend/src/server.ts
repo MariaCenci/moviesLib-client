@@ -8,23 +8,30 @@ const prisma = new PrismaClient();
 const server = express();
 const PORT_SERVER = 4000;
 
-//server.use(cors());
+
 
 const baseURL = process.env.NODE_ENV === 'production'
   ? 'https://movieslib.onrender.com'
   : 'http://localhost:4000'; // ou a URL local do seu backend
 
+  server.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", 'https://movieslib-frontend.onrender.com');
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  });
 
-  const FRONTEND_URL = 'https://movieslib-frontend.onrender.com'
+ 
 
 const corsOptions = {
 
-  origin: FRONTEND_URL, // Substitua pelo URL real do seu frontend no Render
+  origin:  'https://movieslib-frontend.onrender.com', // Substitua pelo URL real do seu frontend no Render
   optionsSuccessStatus: 200, // alguns navegadores antigos (IE11, vários SmartTVs) interpretam os códigos de status 204 erroneamente
 };
 
-server.use(cors(corsOptions));
 
+server.use(cors(corsOptions));
+server.use(cors());
 
 server.use(express.json());
 
