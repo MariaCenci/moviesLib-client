@@ -64,7 +64,7 @@ server.post(`${baseURL}/register`, async (req, res) => {
 });
 
 // login
-server.post(`${baseURL}/login`, async (req, res) => {
+server.post(`/login`, async (req, res) => {
   try {
     const { email, password, userId } = req.body;
 
