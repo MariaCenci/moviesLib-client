@@ -8,7 +8,23 @@ const prisma = new PrismaClient();
 const server = express();
 const PORT_SERVER = 4000;
 
-server.use(cors());
+//server.use(cors());
+
+const baseURL = process.env.NODE_ENV === 'production'
+  ? 'https://movieslib-backend.onrender.com'
+  : 'http://localhost:4000'; // ou a URL local do seu backend
+
+
+  const FRONTEND_URL = 'https://movieslib-frontend.onrender.com'
+
+const corsOptions = {
+
+  origin: process.env.FRONTEND_URL || 'https://movieslib-frontend.onrender.com', // Substitua pelo URL real do seu frontend no Render
+  optionsSuccessStatus: 200, // alguns navegadores antigos (IE11, vários SmartTVs) interpretam os códigos de status 204 erroneamente
+};
+
+server.use(cors(corsOptions));
+
 
 server.use(express.json());
 
@@ -18,7 +34,7 @@ server.get("/", (req, res) => {
 
 //register
 
-server.post("/register", async (req, res) => {
+server.post(`${baseURL}/register`, async (req, res) => {
   try {
     const { email, password } = req.body;
     const passwordHash = await hashSync(password, 10);
@@ -48,7 +64,7 @@ server.post("/register", async (req, res) => {
 });
 
 // login
-server.post("/login", async (req, res) => {
+server.post(`${baseURL}/login`, async (req, res) => {
   try {
     const { email, password, userId } = req.body;
 
@@ -79,7 +95,7 @@ server.post("/login", async (req, res) => {
 });
 
 /*get fav movies */
-server.get("/api/favoriteMovies/:userId", async (req, res) => {
+server.get(`${baseURL}/api/favoriteMovies/:userId`, async (req, res) => {
   try {
     const { userId } = req.params;
     const movies = await prisma.favoriteMovie.findMany({
@@ -100,7 +116,7 @@ server.get("/api/favoriteMovies/:userId", async (req, res) => {
 
 
 // add favorite 
-server.post("/api/addFavorite", async (req, res) => {
+server.post(`${baseURL}/api/addFavorite`, async (req, res) => {
   const { userId, movieId, original_title, poster_path } = req.body;
 
   if (typeof userId !== undefined && movieId !== undefined) {
@@ -151,7 +167,7 @@ server.post("/api/addFavorite", async (req, res) => {
 
 
 // delete favorites
-server.delete("/api/removeFavorite", async (req, res) => {
+server.delete(`${baseURL}/api/removeFavorite`, async (req, res) => {
   const { userId, movieId } = req.body;
 
   try {
@@ -173,7 +189,7 @@ server.delete("/api/removeFavorite", async (req, res) => {
       },
     });
 
-    await fetch('http://localhost:4000/api/updateFavorites', {
+    await fetch(`${baseURL}/api/updateFavorites`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -188,7 +204,7 @@ server.delete("/api/removeFavorite", async (req, res) => {
 });
 
 //update favorites
-server.put("/api/updateFavorites", async (req, res) => {
+server.put(`${baseURL}/api/updateFavorites`, async (req, res) => {
   const { userId } = req.body;
 
 
@@ -212,7 +228,7 @@ server.put("/api/updateFavorites", async (req, res) => {
 
 
 // get from watch list
-server.get("/api/watchList/:userId", async (req, res) => {
+server.get(`${baseURL}/api/watchList/:userId`, async (req, res) => {
   try {
     const { userId } = req.params;
     const movies = await prisma.watchList.findMany({
@@ -279,7 +295,7 @@ server.post("/api/addToWatchList", async (req, res) => {
 });
 
 // remove from watch list
-server.delete("/api/removeFromWatchList", async (req, res) => {
+server.delete(`${baseURL}/api/removeFromWatchList`, async (req, res) => {
   const { userId, movieId } = req.body;
 
   try {
@@ -301,7 +317,7 @@ server.delete("/api/removeFromWatchList", async (req, res) => {
       },
     });
 
-    await fetch('http://localhost:4000/api/updateWatchList', {
+    await fetch(`${baseURL}/api/updateWatchList`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -315,7 +331,7 @@ server.delete("/api/removeFromWatchList", async (req, res) => {
   }
 });
 
-server.put("/api/updateWatchList", async (req, res) => {
+server.put(`${baseURL}/api/updateWatchList`, async (req, res) => {
   const { userId } = req.body;
 
 
