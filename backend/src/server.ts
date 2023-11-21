@@ -337,11 +337,10 @@ server.put("/api/updateWatchList", async (req, res) => {
 
 
 
-/*
-server.listen(PORT_SERVER, () => {
-  console.log(`server initialized at http://localhost:${PORT_SERVER}`);
-});
-*/
+
+//server.listen(PORT_SERVER, () => {
+ // console.log(`server initialized at http://localhost:${PORT_SERVER}`);
+//});
 
 
 server.listen({
