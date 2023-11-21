@@ -11,7 +11,7 @@ const PORT_SERVER = 4000;
 //server.use(cors());
 
 const baseURL = process.env.NODE_ENV === 'production'
-  ? 'https://movieslib-backend.onrender.com'
+  ? 'https://movieslib.onrender.com'
   : 'http://localhost:4000'; // ou a URL local do seu backend
 
 
@@ -64,7 +64,7 @@ server.post(`${baseURL}/register`, async (req, res) => {
 });
 
 // login
-server.post(`/login`, async (req, res) => {
+server.post(`${baseURL}/login`, async (req, res) => {
   try {
     const { email, password, userId } = req.body;
 
