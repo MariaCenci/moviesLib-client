@@ -10,14 +10,10 @@ import "./login.scss";
 const Login: React.FC = () => {
 
   const api = axios.create({
-    baseURL: "https://movies-lib-server-h9vtq1ecd-maria-cencis-projects.vercel.app",
-    withCredentials: true, // Adicione esta linha
+    baseURL: "http://localhost:4000",
+   
   });
   
-  // baseURL: "http://localhost:4000"
-  
-
-
 
 
   const navigate = useNavigate();

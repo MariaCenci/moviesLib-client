@@ -24,7 +24,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
   };
 
   const api = axios.create({
-    baseURL: "https://movieslib.onrender.com",
+    baseURL: "http://localhost:4000",
   });
 
   const [favorite, setFavorite] = useState(false);

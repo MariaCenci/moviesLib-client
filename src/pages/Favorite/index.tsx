@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Favorite: React.FC<FavoriteProps> = () => {
   const api = axios.create({
-    baseURL: "https://movieslib.onrender.com",
+    baseURL: "http://localhost:4000",
   });
 
   const userId = localStorage.getItem("userId");
