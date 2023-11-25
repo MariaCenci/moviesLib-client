@@ -3,39 +3,31 @@ import { compareSync, hashSync } from "bcrypt";
 import express from "express";
 import cors from "cors";
 
-const prisma = new PrismaClient();
+//const prisma = new PrismaClient();
+
+
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: 'postgresql://ep-patient-night-16675703.us-east-2.aws.neon.tech',
+    },
+  },
+});
 
 const server = express();
-const PORT_SERVER = 4000;
+//const PORT_SERVER = process.env.PORT_SERVER;
 
+const baseURL = process.env.BASE_URL || 'http://localhost:4000';
 
-
-/*const baseURL = process.env.NODE_ENV === 'production'
-  ? 'https://movieslib.onrender.com'
-  : 'http://localhost:4000'; // ou a URL local do seu backend*/
-
-  const isProduction = process.env.NODE_ENV === 'production';
-const baseURL = isProduction
-  ? 'https://movies-lib-server.vercel.app/'
-  : `http://localhost:${process.env.PORT || 4000}`;
-
-  server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", 'https://movies-lib-frontend.vercel.app/');
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    next();
-  });
-
- 
 
 const corsOptions = {
-
-  origin:  'https://movies-lib-frontend.vercel.app/', // Substitua pelo URL real do seu frontend no Render
-  optionsSuccessStatus: 200, // alguns navegadores antigos (IE11, vários SmartTVs) interpretam os códigos de status 204 erroneamente
+  origin: 'https://movies-lib-client-9taofdav8-maria-cencis-projects.vercel.app', 
+  optionsSuccessStatus: 200, 
 };
 
-
 server.use(cors(corsOptions));
+
+
 //server.use(cors());
 
 server.use(express.json());
@@ -46,7 +38,7 @@ server.get(`/`, (req, res) => {
 
 //register
 
-server.post(`/register`, async (req, res) => {
+server.post(`${baseURL}/register`, async (req, res) => {
   try {
     const { email, password } = req.body;
     const passwordHash = await hashSync(password, 10);
@@ -375,5 +367,5 @@ server.put(`${baseURL}/api/updateWatchList`, async (req, res) => {
 
 server.listen({
   host: '0.0.0.0',
-  port: process.env.PORT ? Number(process.env.PORT) : PORT_SERVER
+  port: process.env.PORT ? Number(process.env.PORT) : 4000
 })
