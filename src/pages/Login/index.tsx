@@ -9,7 +9,7 @@ import "./login.scss";
 
 const Login: React.FC = () => {
 const api = axios.create({
-  baseURL: "https://movies-lib-server-h9vtq1ecd-maria-cencis-projects.vercel.app",
+  baseURL: "https://api-movies-lib.vercel.app",
   // baseURL: "http://localhost:4000"
   });
 
