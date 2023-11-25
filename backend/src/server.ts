@@ -18,15 +18,21 @@ const server = express();
 //const PORT_SERVER = process.env.PORT_SERVER;
 
 const baseURL = process.env.BASE_URL || 'http://localhost:4000';
-
-
+//const baseURL ='http://localhost:4000';
+/*
 const corsOptions = {
   origin: 'https://movies-lib-client-9taofdav8-maria-cencis-projects.vercel.app', 
   optionsSuccessStatus: 200, 
 };
 
-server.use(cors(corsOptions));
 
+*/
+const corsOptions = {
+  origin: '*', // ou '*'
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+};
+server.use(cors(corsOptions));
 
 //server.use(cors());
 
@@ -369,3 +375,7 @@ server.listen({
   host: '0.0.0.0',
   port: process.env.PORT ? Number(process.env.PORT) : 4000
 })
+/*
+server.listen(4000, () => {
+  console.log("initialized at 4000")
+})*/
